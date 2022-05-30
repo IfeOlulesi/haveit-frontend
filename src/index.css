@@ -1,13 +1,50 @@
+* {
+  margin: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/* Raleway Bold */
+@font-face {
+  font-family: "RalewayBold";
+  src: local("RalewayBold"), url("./fonts/Raleway-Bold.ttf");
+  font-weight: 700;
 }
+
+.font-rb-bold {
+  font-family: "RalewayBold";
+}
+
+/* Raleway Semibold */
+@font-face {
+  font-family: "RalewaySemiBold";
+  src: local("RalewaySemiBold"), url("./fonts/Raleway-SemiBold.ttf");
+  font-weight: 600;
+}
+
+.font-rb-semibold {
+  font-family: "RalewaySemiBold";
+}
+
+/* Raleway Medium */
+@font-face {
+  font-family: "RalewayMedium";
+  src: local("RalewayMedium"), url("./fonts/Raleway-Medium.ttf");
+  font-weight: 500;
+}
+
+.font-rb-medium {
+  font-family: "RalewayMedium";
+}
+
+
+
+
