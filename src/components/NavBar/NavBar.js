@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   navbarContainer: {
     display: "flex",
     width: "100%",
-    border: "1px solid lightgrey",
+    // border: "1px solid lightgrey",
     paddingTop: "1em",
     paddingLeft: "1em",
     flexDirection: "row",

@@ -45,6 +45,17 @@ body {
   font-family: "RalewayMedium";
 }
 
+/* Raleway Normal */
+@font-face {
+  font-family: "RalewayRegular";
+  src: local("RalewayRegular"), url("./fonts/Raleway-Regular.ttf");
+  font-weight: 400;
+}
+
+.font-rb-regular {
+  font-family: "RalewayRegular";
+}
+
 
 
 
