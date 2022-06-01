@@ -1,16 +1,19 @@
 import React from "react";
 import './App.css';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-import NavBar from "./components/NavBar/NavBar";
-import LandingPageContent from "./components/LandingPageContent/LandingPageContent";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  landingPageContainer: {
-    paddingTop: "3em",
-    // border: "1px solid lightgrey",
-    display: "flex",
-  },
-}))
+import { useAuth0 } from "@auth0/auth0-react";
+
+import MainApp from "./components/App";
+import WebSite from "./components/WebSite";
+import LoadingOverlay from "./components/utils/LoadingOverlay";
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 
 const projectColors = {
   primary: "#5956E9",
@@ -20,10 +23,7 @@ const projectColors = {
 const theme = createTheme({
   palette: {
     primary: {
-      // contrastText: colors.green[500],
-      // dark: colors.red[800],
       main: projectColors.primary,
-      // light: colors.indigo[100]
     },
     secondary: {
       main: projectColors.secondary,
@@ -37,17 +37,37 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
-  const classes = useStyles();
 
+const App = () => {
+  const { isAuthenticated, isLoading } = useAuth0();
+  console.log(`status [app]: ${isAuthenticated} \nloading? [app]: ${isLoading}`);
+  
   return (
     <ThemeProvider theme={theme}>
-      <div className="alpha-container wrapper display-flex">
-        <NavBar />
-        <LandingPageContent />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<WebSite />} />
+          <Route exact path="/app" element={
+            isLoading ? <LoadingOverlay /> :
+            <RequireAuth authStatus={isAuthenticated} loading={isLoading}>
+              <MainApp />
+            </RequireAuth>
+            } 
+          />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
+
+const RequireAuth = ({ children, authStatus }) => {
+  const { loginWithRedirect } = useAuth0();
+
+  if (authStatus === false) {
+    loginWithRedirect();
+  }
+  else return children;
+}
+
 
 export default App;

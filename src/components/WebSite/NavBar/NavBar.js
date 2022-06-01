@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import "./NavBar.css";
 import NavCircleBg from "./navbar-circle-toggle.png"
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Logo = ({className}) => {
   return (
@@ -51,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const SubMenu = ({theClass}) => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <ul 
       className={`scaffold nav__submenu ${theClass}`}
@@ -63,14 +66,13 @@ const SubMenu = ({theClass}) => {
         <a className="nav__submenu-item-link" href="/">Support</a>
       </li>
       <li id="nl-3" className="nav__submenu-item ">
-        <a className="nav__submenu-item-link" href="./Login">Login</a>
+        <div className="nav__submenu-item-link" onClick={() => loginWithRedirect()}>Log In</div>
       </li>
     </ul>
   )
 }
 
 const NavBar = () => {
-
   const classes = useStyles();
   const [toggleMenu, setToggleMenu] = useState({
     showingDropDownMenu: false, 
@@ -120,7 +122,7 @@ const NavBar = () => {
             <div className="menu-line" id='menu-line-3'></div>
           </div>
 
-          <SubMenu theClass = {toggleMenu.submenuClass} />
+          <SubMenu theClass = {toggleMenu.submenuClass}  />
         </button>
       </div>
     </div>
