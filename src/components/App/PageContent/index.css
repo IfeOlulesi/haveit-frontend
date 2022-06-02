@@ -1,0 +1,23 @@
+#page-content-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7em;
+  padding: 0 1em 0 1em;
+}
+
+#main-text {
+  font-size: 2em;
+}
+
+#secondary-text {
+  font-size: .7em;
+  color: #6e6e6e;
+}
+
+#products-container {
+  margin-top: 10px;
+}
+
+#tab-Content-container {
+  padding: 20px 10px 0 10px;
+}
