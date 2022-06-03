@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -43,15 +43,19 @@ const theme = createTheme({
 
 const App = () => {
   const { isAuthenticated, isLoading } = useAuth0();
-  console.log(`status [app]: ${isAuthenticated} \nloading? [app]: ${isLoading}`);
+  const [overlayOpen, setOverlayOpen] = useState(false);
   
+  useEffect(() => {
+    if (isLoading === true) setOverlayOpen(true);
+  }, [isLoading])
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<WebSite />} />
-          <Route exact path="/app" element={
-            isLoading ? <LoadingOverlay /> :
+          <Route path="/app" element={
+            isLoading ? <LoadingOverlay open={overlayOpen} setOpen={setOverlayOpen} /> :
             <RequireAuth authStatus={isAuthenticated} loading={isLoading}>
               <MainApp />
             </RequireAuth>

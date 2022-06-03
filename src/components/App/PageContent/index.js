@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css"
 
 import appleWatch from "./Mask Group.png";
+import ProductDetails from "../ProductDetails"; 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -53,29 +54,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Wearables = () => {
+const Wearables = ({ setProductDetailsOpen }) => {
+
+  const openProductDetailsPage = () => setProductDetailsOpen(true);
+
   return (
     <div id="wearable-container">
       <div id="products-slider">
-        <div className="product-container">
+        <div className="product-container" onClick={openProductDetailsPage}>
           <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <div className="prim-text">Apple Watch</div>
-          <div className="sec-text">Series 6 . Red</div>
-          <div className="price">$233</div>
+          <Typography variant="subtitle1" className="prim-text font-rb-bold">Apple Watch</Typography>
+          <Typography variant="subtitle2" className="sec-text">Series 6 . Red</Typography>
+          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
         </div>
         <div className="product-container">
           <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <div className="prim-text">Apple Watch</div>
-          <div className="sec-text">Series 6 . Red</div>
-          <div className="price">$233</div>
+          <Typography variant="subtitle1" className="prim-text font-rb-bold">Mango Watch</Typography>
+          <Typography variant="subtitle2" className="sec-text">Series 6 . Yellow</Typography>
+          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
         </div>
         <div className="product-container">
           <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <div className="prim-text">Apple Watch</div>
-          <div className="sec-text">Series 6 . Red</div>
-          <div className="price">$233</div>
+          <Typography variant="subtitle1" className="prim-text font-rb-bold">Grape Watch</Typography>
+          <Typography variant="subtitle2" className="sec-text">Series 6 . Purple</Typography>
+          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
         </div>
-        
       </div>
     </div>
   )
@@ -94,32 +97,36 @@ const Phones = () => {
 const PageContent = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [productDetailsOpen, setProductDetailsOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div id="page-content-container">
-      <div className="font-rb-bold" id="main-text"> Explore products <br /> in AR</div>
-      <div className="font-rb-medium" id="secondary-text">Look out for the ___ icon to view products in AR</div>
+    <>
+      <div id="page-content-container">
+        <div className="font-rb-bold" id="main-text"> Explore products <br /> in AR</div>
+        <div className="font-rb-medium" id="secondary-text">Look out for the ___ icon to view products in AR</div>
 
-      <div id="products-container">
-      <div className={classes.demo1}>
-        <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-          <AntTab label="Wearables" />
-          <AntTab label="Laptops" />
-          <AntTab label="Phones" />
-        </AntTabs>
-        
-        <div id="tab-Content-container"></div>
-        {value === 0 && <Wearables />}
-        {value === 1 && <Laptops />}
-        {value === 2 && <Phones />}
-        
+        <div id="products-container">
+          <div className={classes.demo1}>
+            <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+              <AntTab label="Wearables" />
+              <AntTab label="Laptops" />
+              <AntTab label="Phones" />
+            </AntTabs>
+            
+            <div id="tab-Content-container">
+              {value === 0 && <Wearables setProductDetailsOpen={setProductDetailsOpen} />}
+              {value === 1 && <Laptops />}
+              {value === 2 && <Phones />}
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
+      <ProductDetails open={productDetailsOpen} setOpen={setProductDetailsOpen} />
+    </>
   )
 }
 
