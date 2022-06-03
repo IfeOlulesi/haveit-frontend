@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./index.css"
 
+import appleWatch from "./Mask Group.png";
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -22,18 +23,6 @@ const AntTab = withStyles((theme) => ({
     minWidth: 72,
     fontWeight: theme.typography.fontWeightRegular,
     marginRight: theme.spacing(4),
-    // fontFamily: [
-    //   '-apple-system',
-    //   'BlinkMacSystemFont',
-    //   '"Segoe UI"',
-    //   'Roboto',
-    //   '"Helvetica Neue"',
-    //   'Arial',
-    //   'sans-serif',
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(','),
     '&:hover': {
       color: '#40a9ff',
       opacity: 1,
@@ -66,7 +55,29 @@ const useStyles = makeStyles((theme) => ({
 
 const Wearables = () => {
   return (
-    <p>You can view wearables here</p>
+    <div id="wearable-container">
+      <div id="products-slider">
+        <div className="product-container">
+          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
+          <div className="prim-text">Apple Watch</div>
+          <div className="sec-text">Series 6 . Red</div>
+          <div className="price">$233</div>
+        </div>
+        <div className="product-container">
+          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
+          <div className="prim-text">Apple Watch</div>
+          <div className="sec-text">Series 6 . Red</div>
+          <div className="price">$233</div>
+        </div>
+        <div className="product-container">
+          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
+          <div className="prim-text">Apple Watch</div>
+          <div className="sec-text">Series 6 . Red</div>
+          <div className="price">$233</div>
+        </div>
+        
+      </div>
+    </div>
   )
 }
 const Laptops = () => {

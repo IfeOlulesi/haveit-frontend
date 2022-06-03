@@ -28,6 +28,9 @@ const theme = createTheme({
     secondary: {
       main: projectColors.secondary,
     },
+    // background: {
+    //   default: "#F2F2F2"
+    // }
   },
   typography: {
     fontFamily: [

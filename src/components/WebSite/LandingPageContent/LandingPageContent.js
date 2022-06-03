@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingPageContent = () => {
 
+  const { loginWithRedirect } = useAuth0();
   const classes = useStyles();
 
   return (
@@ -58,6 +60,7 @@ const LandingPageContent = () => {
           className={classes.landingPageButton}
           variant="contained"  
           color="primary" 
+          onClick={() => loginWithRedirect()}
         >
           Get Started
         </Button>
