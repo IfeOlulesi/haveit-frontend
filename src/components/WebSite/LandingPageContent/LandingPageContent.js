@@ -4,17 +4,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+import LandingPageBg from "./landing-page-image.png";
+
 const useStyles = makeStyles((theme) => ({
   landingPageContainer: {
     // border: "1px solid lightgrey",
     display: "flex",
     flexDirection: "column",
-    padding: "6.5em .5em 0 .5em"
+    padding: "6.5em 0 0 0",
   },
   mainText: {
     fontSize: "2em",
     lineHeight: "1.5",
     textAlign: "center",
+    marginTop: "10px", 
   },
   secondaryText: {
     padding: "2rem 1rem 0 1rem",
@@ -37,7 +40,20 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+  },
+  landingPageBgContainer: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "flex-end",
+
+  },
+  landingPageBg: {
+    position: "absolute",
+    width: "80vw",
+    marginTop: "40px",
   }
+
+  
 }))
 
 
@@ -64,6 +80,9 @@ const LandingPageContent = () => {
         >
           Get Started
         </Button>
+      </div>
+      <div className={classes.landingPageBgContainer}>
+        <img src={LandingPageBg} alt="LandingPage Background" className={classes.landingPageBg}/>
       </div>
 
     </div>
