@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   landingPageBgContainer: {
     position: "relative",
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "center",
 
   },
   landingPageBg: {
