@@ -5,6 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 import LandingPageBg from "./landing-page-image.png";
+import LandingPageBg_1 from "./landing-page-image1.png";
+import LandingPageBg_2 from "./landing-page-image2.png";
+
+
 
 const useStyles = makeStyles((theme) => ({
   landingPageContainer: {
@@ -17,13 +21,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2em",
     lineHeight: "1.5",
     textAlign: "center",
-    marginTop: "10px", 
+    marginTop: "10px",
+    padding: "2rem 1.4rem 0 1.4rem", 
   },
   secondaryText: {
-    padding: "2rem 1rem 0 1rem",
+    padding: "2rem 1.8rem 0 1.8rem",
     color: "#737373",
     textAlign: "center",
-    fontSize: "1.2em",
+    fontSize: "1em",
     lineHeight: "1.8"
   },
   landingPageButton: {
@@ -48,12 +53,31 @@ const useStyles = makeStyles((theme) => ({
 
   },
   landingPageBg: {
-    position: "absolute",
+    // position: "absolute",
     width: "80vw",
     marginTop: "40px",
-  }
+  },
+  heroText1: {
+    marginTop: "20px",
+    fontSize: "1.4em",
+    lineHeight: "1.5",
+    textAlign: "center",
+    // fontWeight: "100",
+  },
+  heroText2: {
+    marginTop: "40px",
+    fontSize: "1em",
+    lineHeight: "1.5",
+    textAlign: "center",
+    fontWeight: "700",
+    // color: "primary",
+  },
 
-  
+  landingPageBg_2: {
+    // position: "absolute",
+    width: "80vw",
+    marginTop: "40px",
+  },
 }))
 
 
@@ -81,8 +105,54 @@ const LandingPageContent = () => {
           Get Started
         </Button>
       </div>
-      <div className={classes.landingPageBgContainer}>
-        <img src={LandingPageBg} alt="LandingPage Background" className={classes.landingPageBg}/>
+
+      <div className = {classes.landingPageBgContainer}>
+        <img 
+            src = {LandingPageBg} 
+            alt = "LandingPage Background" 
+            className = {classes.landingPageBg}
+        />
+      </div>
+
+      <div className={`${classes.heroText1} font-rb-semibold`} >
+            How it works
+      </div>
+
+      <div className={`${classes.heroText2} font-rb-medium`}>
+            Create an account
+      </div>
+
+      <div className={`${classes.mainText} font-rb-bold`}>
+            Discover original product
+      </div>
+
+      <div className={`${classes.secondaryText} font-rb-medium`}>
+            There are more than 950 categories updated daily based on trending websites reviews an users rating.
+      </div>
+
+      <div className = {classes.landingPageBgContainer}>
+        <img 
+            src = {LandingPageBg_2} 
+            alt = "LandingPage Background" 
+            className = {classes.landingPageBg}
+        />
+      </div>
+
+      <div className={`${classes.mainText} font-rb-bold`}>
+        Experience products in AR
+      </div>
+
+      <div className={`${classes.secondaryText} font-rb-medium`}>
+        Have your tried Augmented Reality? Stop looking at boring galleries and start experiences with each item.
+      </div>
+
+
+      <div className = {classes.landingPageBgContainer}>
+        <img 
+            src = {LandingPageBg_1} 
+            alt = "LandingPage Background" 
+            className = {classes.landingPageBg}
+        />
       </div>
 
     </div>
