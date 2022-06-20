@@ -50,13 +50,13 @@ const App = () => {
   }, [isLoading])
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme = {theme}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<WebSite />} />
-          <Route path="/app" element={
-            isLoading ? <LoadingOverlay open={overlayOpen} setOpen={setOverlayOpen} /> :
-            <RequireAuth authStatus={isAuthenticated} loading={isLoading}>
+          <Route exact path="/" element = {<WebSite />} />
+          <Route path = "/app" element = {
+            isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
+            <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
               <MainApp />
             </RequireAuth>
             } 
