@@ -20,7 +20,7 @@ body {
 }
 
 .font-rb-bold {
-  font-family: "RalewayBold";
+  font-family: "RalewayBold" !important;
 }
 
 /* Raleway Semibold */
@@ -31,7 +31,7 @@ body {
 }
 
 .font-rb-semibold {
-  font-family: "RalewaySemiBold";
+  font-family: "RalewaySemiBold" !important;
 }
 
 /* Raleway Medium */
@@ -42,7 +42,7 @@ body {
 }
 
 .font-rb-medium {
-  font-family: "RalewayMedium";
+  font-family: "RalewayMedium" !important;
 }
 
 /* Raleway Normal */
@@ -53,7 +53,7 @@ body {
 }
 
 .font-rb-regular {
-  font-family: "RalewayRegular";
+  font-family: "RalewayRegular" !important;
 }
 
 

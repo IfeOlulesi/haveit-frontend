@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme) => ({
   navbarContainer: {
     display: "flex",
     width: "100%",
-    // border: "1px solid lightgrey",
+    backgroundColor: "white",
     paddingTop: "1em",
     paddingLeft: "1em",
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingBottom: "10px",
   },
   logoContaier: {
     display: "flex",
@@ -72,7 +73,7 @@ const SubMenu = ({theClass}) => {
   )
 }
 
-const NavBar = () => {
+const NavBar = ({ scrollTop }) => {
   const classes = useStyles();
   const [toggleMenu, setToggleMenu] = useState({
     showingDropDownMenu: false, 
@@ -105,7 +106,13 @@ const NavBar = () => {
   }
    
   return (
-    <div className={classes.navbarContainer} id="navbar">
+    <div 
+      className={classes.navbarContainer} 
+      id="navbar" 
+      style={{ 
+        boxShadow: scrollTop > 0 ? 
+          "inset 0 8px 5px -5px rgb(0 0 0 / 0.4)" : "none",
+        }}>
       <div className={classes.logoContaier}>
         <Logo className={classes.navbarLogo} />
         <h2 className={`font-rb-bold ${classes.navbarLogoName}`}>HaveIt</h2>

@@ -10,11 +10,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
 const AntTabs = withStyles({
-  root: {
-    borderBottom: '1px solid #e8e8e8',
-  },
   indicator: {
-    backgroundColor: '#1890ff',
+    backgroundColor: '#5956E9',
   },
 })(Tabs);
 
@@ -23,17 +20,19 @@ const AntTab = withStyles((theme) => ({
     textTransform: 'none',
     minWidth: 72,
     fontWeight: theme.typography.fontWeightRegular,
-    marginRight: theme.spacing(4),
+    fontSize: "1.05rem",
+    marginRight: theme.spacing(2),
+    color: '#9A9A9D',
     '&:hover': {
-      color: '#40a9ff',
-      opacity: 1,
+      color: '#5956E9',
+    opacity: 1,
     },
     '&$selected': {
-      color: '#1890ff',
-      fontWeight: theme.typography.fontWeightMedium,
+      color: '#5956E9',
+      fontWeight: "600",
     },
     '&:focus': {
-      color: '#40a9ff',
+      color: '#5956E9',
     },
   },
   selected: {},
@@ -46,39 +45,33 @@ const useStyles = makeStyles((theme) => ({
   padding: {
     padding: theme.spacing(3),
   },
-  demo1: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  demo2: {
-    backgroundColor: '#2e1534',
-  },
 }));
 
 const Wearables = ({ setProductDetailsOpen }) => {
 
   const openProductDetailsPage = () => setProductDetailsOpen(true);
 
+  const products = [
+    {imgSrc: "", prodName: "Apple Watch", sDesc: "Series 6 . Red", price: "$359"},
+    {imgSrc: "", prodName: "Mango Watch", sDesc: "Series 6 . Yellow", price: "$253"},
+    {imgSrc: "", prodName: "Pineapple Watch", sDesc: "Series 6 . Green", price: "$3,393"},
+    {imgSrc: "", prodName: "Grape Watch", sDesc: "Series 6 . Purple", price: "$9,923"},
+    {imgSrc: "", prodName: "Watermelon Watch", sDesc: "Series 6 . Red", price: "$59"},
+  ]
+
   return (
     <div id="wearable-container">
       <div id="products-slider">
-        <div className="product-container" onClick={openProductDetailsPage}>
-          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <Typography variant="subtitle1" className="prim-text font-rb-bold">Apple Watch</Typography>
-          <Typography variant="subtitle2" className="sec-text">Series 6 . Red</Typography>
-          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
-        </div>
-        <div className="product-container">
-          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <Typography variant="subtitle1" className="prim-text font-rb-bold">Mango Watch</Typography>
-          <Typography variant="subtitle2" className="sec-text">Series 6 . Yellow</Typography>
-          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
-        </div>
-        <div className="product-container">
-          <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-          <Typography variant="subtitle1" className="prim-text font-rb-bold">Grape Watch</Typography>
-          <Typography variant="subtitle2" className="sec-text">Series 6 . Purple</Typography>
-          <Typography variant="h6" className="price font-rb-bold"><b>$233</b></Typography>
-        </div>
+        {products.map((product) => {
+          return (
+            <div className="product-container" onClick={openProductDetailsPage}>
+              <img src={appleWatch} alt="apple watch" className="apple-watch"/>
+              <Typography variant="subtitle1" className="prim-text font-rb-semibold" style={{marginTop: "-20px",}}>{product.prodName}</Typography>
+              <Typography variant="subtitle2" className="sec-text font-rb-medium">{product.sDesc}</Typography>
+              <Typography variant="body1" className="price font-rb-bold">{product.price}</Typography>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -107,7 +100,7 @@ const PageContent = () => {
     <>
       <div id="page-content-container">
         <div className="font-rb-bold" id="main-text"> Explore products <br /> in AR</div>
-        <div className="font-rb-medium" id="secondary-text">Look out for the ___ icon to view products in AR</div>
+        {/* <div className="font-rb-medium" id="secondary-text">Look out for the ___ icon to view products in AR</div> */}
 
         <div id="products-container">
           <div className={classes.demo1}>

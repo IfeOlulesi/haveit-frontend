@@ -6,7 +6,8 @@ import PageContent from "./PageContent";
 
 const useStyles = makeStyles((theme) => ({
   webAppContainer: {
-    // backgroundColor: "#F2F2F2",
+    backgroundColor: "#eee",
+    height: "100vh",
   }
 }))
 
