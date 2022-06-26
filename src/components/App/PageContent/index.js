@@ -21,11 +21,11 @@ const AntTab = withStyles((theme) => ({
     minWidth: 72,
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: "1.05rem",
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(2),
     color: '#9A9A9D',
     '&:hover': {
       color: '#5956E9',
-      opacity: 1,
+    opacity: 1,
     },
     '&$selected': {
       color: '#5956E9',
