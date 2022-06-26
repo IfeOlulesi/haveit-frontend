@@ -1,12 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
 // import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import ListItem from '@material-ui/core/ListItem';
-// import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,6 +16,8 @@ import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRo
 import { EyeGlassesIcon } from "../../icons";
 import AppleWatch from "./apple-watch.png"
 import { Typography } from "@material-ui/core";
+
+import ARView from "../ARView";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -58,37 +57,49 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const ProductDetails = ({open, setOpen}) => {
   const classes = useStyles();
 
+  const [ARViewOpen, setARViewOpen] = useState(false);
+
+
   const handleClose = () => {
     setOpen(false);
   };
 
+  const launchARView = () => {
+    console.log("hello world");
+    setARViewOpen(true);
+  }
+
   return (
-    <Dialog 
-      className={classes.dialogRoot} 
-      fullScreen open={open} onClose={handleClose} 
-      TransitionComponent={Transition}
-      BackdropProps={{ style: { backgroundColor: "black" } }}
-    >
-      <AppBar className={classes.appBar}>
-        <Toolbar className={classes.toolBar}>
-          <IconButton edge="start" onClick={handleClose} aria-label="close">
-            <KeyboardBackspaceRoundedIcon />
-          </IconButton>
-          <IconButton onClick={() => console.log("AR loading...")} aria-label="close">
-            <EyeGlassesIcon strokeColor={"#5956E9"}/>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      
-      <div className={classes.imageContainer}>
-        <img className={classes.productImage} src={AppleWatch} alt="Apple Watch" />
-      </div>
+    <>
+      <Dialog 
+        className={classes.dialogRoot} 
+        fullScreen open={open} onClose={handleClose} 
+        TransitionComponent={Transition}
+        BackdropProps={{ style: { backgroundColor: "black" } }}
+      >
+        <AppBar className={classes.appBar}>
+          <Toolbar className={classes.toolBar}>
+            <IconButton edge="start" onClick={handleClose} aria-label="close">
+              <KeyboardBackspaceRoundedIcon />
+            </IconButton>
+            <IconButton onClick={launchARView} aria-label="close">
+              <EyeGlassesIcon strokeColor={"#5956E9"}/>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        
+        <div className={classes.imageContainer}>
+          <img className={classes.productImage} src={AppleWatch} alt="Apple Watch" />
+        </div>
 
-      <div className={classes.productInfo}>
-        <Typography variant="h5">2020 Apple Watch 6.2"</Typography>
-      </div>
+        <div className={classes.productInfo}>
+          <Typography variant="h5">2020 Apple Watch 6.2"</Typography>
+        </div>
 
-    </Dialog>
+
+      </Dialog>
+      <ARView open={ARViewOpen} setOpen={setARViewOpen} />
+    </>
   )
 }
 
