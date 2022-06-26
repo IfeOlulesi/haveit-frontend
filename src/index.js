@@ -14,12 +14,12 @@ import "./fonts/Raleway-Medium.ttf";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Auth0Provider
-    domain="dev-8gitaj8h.us.auth0.com"
-    clientId="0GmNKWutRlQ7Ni6Jmdb2QXmWB2dNyfFs"
-    redirectUri={window.location.origin}
-  >
+  // <Auth0Provider
+  //   domain="dev-8gitaj8h.us.auth0.com"
+  //   clientId="0GmNKWutRlQ7Ni6Jmdb2QXmWB2dNyfFs"
+  //   redirectUri={window.location.origin}
+  // >
     <App />
-  </Auth0Provider>
+  // </Auth0Provider>
 );
 

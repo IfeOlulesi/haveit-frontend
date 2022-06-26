@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   hamButton: {
     borderStyle: "none",
-    background: "#FFFFFF",
+    // background: "#FFFFFF",
   },
 }))
 

@@ -68,11 +68,19 @@ const ARView = ({open, setOpen}) => {
       </AppBar>
 
       <div className="ar-display">
-        <iframe 
+        {/* <iframe 
           className="ar-view-iframe"
           title="AR view"
           allow="camera;microphone"
           src="https://mywebar.com/p/Project_0_o4rwm79kfm?_ga=2.211409045.1017139311.1656179911-634228404.1655732829">
+        </iframe> */}
+        <iframe 
+          src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
+          width="340" height="600" 
+          allow="camera; accelerometer; vr" 
+          title="AR View"
+        > 
+          Your browser does not support embedded content 
         </iframe>
       </div>
     </Dialog>
