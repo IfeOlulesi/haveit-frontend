@@ -1,24 +1,22 @@
 import React, {useState} from "react";
+import "./index.css";
 
 import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
 
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
-// import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
-
-// import CloseIcon from '@material-ui/icons/Close';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from "@material-ui/core/Typography";
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
-// import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded';
-import { EyeGlassesIcon } from "../../icons";
+
 import AppleWatch from "./apple-watch.png"
-import { Typography } from "@material-ui/core";
+import { EyeGlassesIcon } from "../../icons";
 
 import ARView from "../ARView";
+import Cart from "../Cart";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -75,6 +73,7 @@ const ProductDetails = ({open, setOpen}) => {
   const classes = useStyles();
 
   const [ARViewOpen, setARViewOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
 
   const handleClose = () => {
@@ -82,8 +81,12 @@ const ProductDetails = ({open, setOpen}) => {
   };
 
   const launchARView = () => {
-    console.log("hello world");
     setARViewOpen(true);
+  }
+
+  const openCart = () => {
+    setCartOpen(true);
+    console.log("Cart! Open!")
   }
 
   return (
@@ -104,9 +107,11 @@ const ProductDetails = ({open, setOpen}) => {
             <IconButton edge="start" onClick={handleClose} aria-label="close">
               <KeyboardBackspaceRoundedIcon />
             </IconButton>
-            <IconButton onClick={launchARView} aria-label="close">
-              <EyeGlassesIcon strokeColor={"#5956E9"}/>
-            </IconButton>
+            <div className="pulse">
+              <IconButton onClick={launchARView} aria-label="close">
+                <EyeGlassesIcon strokeColor={"#5956E9"} />
+              </IconButton>
+            </div>
           </Toolbar>
         </AppBar>
         
@@ -130,6 +135,7 @@ const ProductDetails = ({open, setOpen}) => {
                 <Button 
                   variant="contained" color="primary" 
                   fullWidth size="large" className={classes.addToCartButton}
+                  onClick={openCart}
                 >
                   <p style={{fontSize: "20px" }} className="font-rb-semibold">Add to Cart</p>
                 </Button>
@@ -140,6 +146,7 @@ const ProductDetails = ({open, setOpen}) => {
       </Dialog>
 
       <ARView open={ARViewOpen} setOpen={setARViewOpen} />
+      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 
 import AppBar from '@material-ui/core/AppBar';
@@ -7,6 +7,9 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+import Cart from "../Cart";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -47,38 +50,51 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const ARView = ({open, setOpen}) => {
   const classes = useStyles()
 
+  const [cartOpen, setCartOpen] = useState(false);
+
   const handleClose = () => {
     setOpen(false);
   }
 
-  return (
-    <Dialog 
-      open={open} fullScreen
-      onClose={handleClose} 
-      TransitionComponent={Transition}
-      BackdropProps={{ style: { backgroundColor: "black" } }}
-      classsName
-    >
-      <AppBar className={classes.appBar}>
-        <Toolbar className={classes.toolBar}>
-          <IconButton edge="start" onClick={handleClose} aria-label="close">
-            <KeyboardBackspaceRoundedIcon style={{ color: "#fff" }}/>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+  const openCart = () => {
+    setCartOpen(true);
+  }
 
-      <div className="ar-display">
-        <iframe 
-          src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
-          // width="340" height="600" 
-          className="ar-view-iframe"
-          allow="camera; accelerometer; vr" 
-          title="AR View"
-        > 
-          Your browser does not support embedded content 
-        </iframe>
-      </div>
-    </Dialog>
+  return (
+    <>
+      <Dialog 
+        open={open} fullScreen
+        onClose={handleClose} 
+        TransitionComponent={Transition}
+        BackdropProps={{ style: { backgroundColor: "black" } }}
+        classsName
+      >
+        <AppBar className={classes.appBar}>
+          <Toolbar className={classes.toolBar}>
+            <IconButton edge="start" onClick={handleClose} aria-label="close">
+              <KeyboardBackspaceRoundedIcon style={{ color: "#fff" }}/>
+            </IconButton>
+            <IconButton edge="start" onClick={openCart} aria-label="close">
+              <AddShoppingCartIcon style={{ color: "#fff" }}/>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+
+        <div className="ar-display">
+          <iframe 
+            src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
+            // width="340" height="600" 
+            className="ar-view-iframe"
+            allow="camera; accelerometer; vr" 
+            title="AR View"
+          > 
+            Your browser does not support embedded content 
+          </iframe>
+        </div>
+      </Dialog>
+
+      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
+    </>
   )
 }
 
