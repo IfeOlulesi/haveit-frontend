@@ -14,10 +14,22 @@ import {
   Route,
 } from "react-router-dom";
 
+// var request = require("request");
+
+// var options = { method: 'POST',
+//   url: 'https://dev-8gitaj8h.us.auth0.com/oauth/token',
+//   headers: { 'content-type': 'application/json', "Access-Control-Allow-Origin": "https://dev-8gitaj8h.us.auth0.com/oauth/token" },
+//   body: '{"client_id":"C79sOgFUFNIOk4q4h81yUaa451Rc656j","client_secret":"p1oArMM3CzSFD0o717iZqf3gKifMoEZQT_FCtHi0Py0l-SsVkoHz_CMn1B8N_rIZ","audience":"https://dev-8gitaj8h.us.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+
+// request(options, function (error, response, body) {
+//   if (error) throw new Error(error);
+
+//   console.log(body);
+// });
 
 const projectColors = {
-  primary: "#5956E9",
-  secondary: "#FFDC5F",
+  primary: "#5956E9", // purple
+  secondary: "#FFDC5F",  // yellow
 }
 
 const theme = createTheme({
