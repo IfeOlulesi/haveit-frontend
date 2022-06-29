@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.5",
     textAlign: "center",
     marginTop: "10px",
-    padding: "2rem 1.4rem 0 1.4rem", 
+    padding: "2rem 1.4rem 0 1.4rem",
   },
   secondaryText: {
     padding: "2rem 1.8rem 0 1.8rem",
@@ -78,6 +78,23 @@ const useStyles = makeStyles((theme) => ({
     width: "80vw",
     marginTop: "40px",
   },
+
+  // responsiveness
+  sectionOne: {
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.up('md')]: {
+      flexDirection: "row",
+    },
+  },
+  sectionOneLeft: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    [theme.breakpoints.up('md')]: {
+      justifyContent: "left",
+    },
+  }
 }))
 
 
@@ -89,52 +106,58 @@ const LandingPageContent = () => {
 
   return (
     <div className={`${classes.landingPageContainer}`}>
-      <div className={`${classes.mainText} font-rb-bold`}>
-        Shopping Site for Gadgets and Gifts
-      </div>
-      <div className={`${classes.secondaryText} font-rb-medium`}>
-        Get 10% off your first order when you spend over £40 on any product!
-      </div>
-      <div className={`${classes.buttonContainer}`}>
-        <Button 
-          className={classes.landingPageButton}
-          variant="contained"  
-          color="primary" 
-          onClick={() => loginWithRedirect()}
-        >
-          Get Started
-        </Button>
+
+      <div className={classes.sectionOne}>
+        <div className={classes.sectionOneLeft}>
+          <div className={`${classes.mainText} font-rb-bold`}>
+            Shopping Site for Gadgets and Gifts
+          </div>
+          <div className={`${classes.secondaryText} font-rb-medium`}>
+            Get 10% off your first order when you spend over £40 on any product!
+          </div>
+          <div className={`${classes.buttonContainer}`}>
+            <Button
+              className={classes.landingPageButton}
+              variant="contained"
+              color="primary"
+              onClick={() => loginWithRedirect()}
+            >
+              Get Started
+            </Button>
+          </div>
+        </div>
+        
+        <div className={classes.landingPageBgContainer}>
+          <img
+            src={LandingPageBg}
+            alt="LandingPage Background"
+            className={classes.landingPageBg}
+            />
+        </div>
       </div>
 
-      <div className = {classes.landingPageBgContainer}>
-        <img 
-            src = {LandingPageBg} 
-            alt = "LandingPage Background" 
-            className = {classes.landingPageBg}
-        />
-      </div>
 
       <div className={`${classes.heroText1} font-rb-semibold`} >
-            How it works
+        How it works
       </div>
 
       <div className={`${classes.heroText2} font-rb-medium`}>
-            Create an account
+        Create an account
       </div>
 
       <div className={`${classes.mainText} font-rb-bold`}>
-            Discover original product
+        Discover original product
       </div>
 
       <div className={`${classes.secondaryText} font-rb-medium`}>
-            There are more than 950 categories updated daily based on trending websites reviews an users rating.
+        There are more than 950 categories updated daily based on trending websites reviews an users rating.
       </div>
 
-      <div className = {classes.landingPageBgContainer}>
-        <img 
-            src = {LandingPageBg_2} 
-            alt = "LandingPage Background" 
-            className = {classes.landingPageBg}
+      <div className={classes.landingPageBgContainer}>
+        <img
+          src={LandingPageBg_2}
+          alt="LandingPage Background"
+          className={classes.landingPageBg}
         />
       </div>
 
@@ -147,11 +170,11 @@ const LandingPageContent = () => {
       </div>
 
 
-      <div className = {classes.landingPageBgContainer}>
-        <img 
-            src = {LandingPageBg_1} 
-            alt = "LandingPage Background" 
-            className = {classes.landingPageBg}
+      <div className={classes.landingPageBgContainer}>
+        <img
+          src={LandingPageBg_1}
+          alt="LandingPage Background"
+          className={classes.landingPageBg}
         />
       </div>
 

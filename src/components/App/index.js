@@ -17,6 +17,9 @@ const MainApp = () => {
     <div className={classes.webAppContainer}>
       <AppNavBar />
       <PageContent />
+      <div style={{border: "1px solid grey"}}>
+        
+      </div>
     </div>
   )
 }

@@ -117,7 +117,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const Cart = ({ cartOpen, setCartOpen}) => {
-  console.log(`hello! The cart is ${cartOpen}`)
   const classes = useStyles();
 
   const handleClose = () => {
