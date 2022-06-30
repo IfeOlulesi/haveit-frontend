@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { home, favorites, profile, cart } from '../../reducers/appSlice';
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   HomeOutline,
@@ -17,6 +17,8 @@ import {
 
 import AppNavBar from "./AppNavbar";
 import PageContent from "./PageContent";
+
+import Cart from "./Cart";
 
 const useStyles = makeStyles((theme) => ({
   webAppContainer: {
@@ -64,6 +66,8 @@ const MainApp = () => {
           {currentTab === "cart" ? <CartFilled /> : <CartOutlined />}
         </div>
       </div>
+
+      <Cart />
     </div>
   )
 }

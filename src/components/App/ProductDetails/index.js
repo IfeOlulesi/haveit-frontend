@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { useDispatch } from 'react-redux';
+import { cart } from '../../../reducers/appSlice';
 import "./index.css";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,7 +18,7 @@ import AppleWatch from "./apple-watch.png"
 import { EyeGlassesIcon } from "../../icons";
 
 import ARView from "../ARView";
-import Cart from "../Cart";
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -73,8 +75,12 @@ const ProductDetails = ({open, setOpen}) => {
   const classes = useStyles();
 
   const [ARViewOpen, setARViewOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
+  // const [cartOpen, setCartOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
+  // const cartState = useSelector(state => state.cart.products)
+  // const currentTab = useSelector(state => state.app.currentTab)
 
   const handleClose = () => {
     setOpen(false);
@@ -85,8 +91,7 @@ const ProductDetails = ({open, setOpen}) => {
   }
 
   const openCart = () => {
-    setCartOpen(true);
-    console.log("Cart! Open!")
+    dispatch(cart());
   }
 
   return (
@@ -137,7 +142,7 @@ const ProductDetails = ({open, setOpen}) => {
                   fullWidth size="large" className={classes.addToCartButton}
                   onClick={openCart}
                 >
-                  <p style={{fontSize: "20px" }} className="font-rb-semibold">Add to Cart</p>
+                  <p style={{fontSize: "20px" }} className="font-rb-semibold" onClick={openCart}>Add to Cart</p>
                 </Button>
               </div>
             </div>
@@ -146,7 +151,7 @@ const ProductDetails = ({open, setOpen}) => {
       </Dialog>
 
       <ARView open={ARViewOpen} setOpen={setARViewOpen} />
-      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
+      {/* <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} /> */}
     </>
   )
 }
