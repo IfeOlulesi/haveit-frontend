@@ -1,5 +1,8 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
+import { home, favorites, profile, cart } from '../../reducers/appSlice';
+
+import { useSelector, useDispatch } from 'react-redux'
 
 import {
   HomeOutline,
@@ -24,31 +27,42 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between"
   },
   utilBar: {
-    border: "1px solid grey", 
-    height: "5rem", 
+    height: "4rem", 
     display: "flex", 
     flexDirection: "row", 
     justifyContent: "space-around",
     paddingTop: "10px",
   },
   box: {
-    width: "30px",
-    height: "30px",
-    border: "1px solid grey",
+    // width: "30px",
+    // height: "30px",
+    // border: "1px solid grey",
   }
 }))
 
 const MainApp = () => {
   const classes = useStyles();
+
+  const currentTab = useSelector(state => state.app.currentTab)
+  const dispatch = useDispatch()
+
   return (
     <div className={classes.webAppContainer}>
       <AppNavBar />
       <PageContent />
       <div className={classes.utilBar}>
-        <div className={classes.box}>H</div>
-        <div className={classes.box}>F</div>
-        <div className={classes.box}>P</div>
-        <div className={classes.box}>C</div>
+        <div onClick={() => dispatch(home())} className={classes.box}>
+          {currentTab === "home" ? <HomeFilled /> : <HomeOutline />}
+        </div>
+        <div onClick={() => dispatch(favorites())} className={classes.box}>
+          {currentTab === "favorites" ? <HeartFilled /> : <HeartOutlined />}
+        </div>
+        <div onClick={() => dispatch(profile())} className={classes.box}>
+          {currentTab === "profile" ? <ProfileFilled /> : <ProfileOutline />}
+        </div>
+        <div onClick={() => dispatch(cart())} className={classes.box}>
+          {currentTab === "cart" ? <CartFilled /> : <CartOutlined />}
+        </div>
       </div>
     </div>
   )

@@ -264,22 +264,9 @@ const HomeOutline = ({ width, height, strokeColor, fillColor }) => {
 
 const HomeFilled = () => {
   return (
-    <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_1_1212)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M30.1572 37.7714V34.7047C30.1572 33.9246 30.7931 33.2908 31.581 33.2856H34.4671C35.2587 33.2856 35.9005 33.9209 35.9005 34.7047V34.7047V37.7809C35.9003 38.4432 36.4343 38.9845 37.103 39H39.0271C40.9451 39 42.5 37.4607 42.5 35.5618V35.5618V26.8378C42.4898 26.0908 42.1355 25.3893 41.538 24.933L34.9577 19.6853C33.8049 18.7716 32.1662 18.7716 31.0134 19.6853L24.462 24.9426C23.8623 25.397 23.5074 26.0997 23.5 26.8474V35.5618C23.5 37.4607 25.0549 39 26.9729 39H28.897C29.5824 39 30.138 38.4499 30.138 37.7714V37.7714" fill="#5956E9" />
-        <path d="M30.1572 37.7714V34.7047C30.1572 33.9246 30.7931 33.2908 31.581 33.2856H34.4671C35.2587 33.2856 35.9005 33.9209 35.9005 34.7047V34.7047V37.7809C35.9003 38.4432 36.4343 38.9845 37.103 39H39.0271C40.9451 39 42.5 37.4607 42.5 35.5618V35.5618V26.8378C42.4898 26.0908 42.1355 25.3893 41.538 24.933L34.9577 19.6853C33.8049 18.7716 32.1662 18.7716 31.0134 19.6853L24.462 24.9426C23.8623 25.397 23.5074 26.0997 23.5 26.8474V35.5618C23.5 37.4607 25.0549 39 26.9729 39H28.897C29.5824 39 30.138 38.4499 30.138 37.7714V37.7714" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <defs>
-        <filter id="filter0_d_1_1212" x="-1" y="-1" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="11" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0.34902 0 0 0 0 0.337255 0 0 0 0 0.913725 0 0 0 0.54 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1212" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1212" result="shape" />
-        </filter>
-      </defs>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.15722 20.7714V17.7047C9.1572 16.9246 9.79312 16.2908 10.581 16.2856H13.4671C14.2587 16.2856 14.9005 16.9209 14.9005 17.7047V17.7047V20.7809C14.9003 21.4432 15.4343 21.9845 16.103 22H18.0271C19.9451 22 21.5 20.4607 21.5 18.5618V18.5618V9.83784C21.4898 9.09083 21.1355 8.38935 20.538 7.93303L13.9577 2.6853C12.8049 1.77157 11.1662 1.77157 10.0134 2.6853L3.46203 7.94256C2.86226 8.39702 2.50739 9.09967 2.5 9.84736V18.5618C2.5 20.4607 4.05488 22 5.97291 22H7.89696C8.58235 22 9.13797 21.4499 9.13797 20.7714V20.7714" fill="#5956E9" />
+      <path d="M9.15722 20.7714V17.7047C9.1572 16.9246 9.79312 16.2908 10.581 16.2856H13.4671C14.2587 16.2856 14.9005 16.9209 14.9005 17.7047V17.7047V20.7809C14.9003 21.4432 15.4343 21.9845 16.103 22H18.0271C19.9451 22 21.5 20.4607 21.5 18.5618V18.5618V9.83784C21.4898 9.09083 21.1355 8.38935 20.538 7.93303L13.9577 2.6853C12.8049 1.77157 11.1662 1.77157 10.0134 2.6853L3.46203 7.94256C2.86226 8.39702 2.50739 9.09967 2.5 9.84736V18.5618C2.5 20.4607 4.05488 22 5.97291 22H7.89696C8.58235 22 9.13797 21.4499 9.13797 20.7714V20.7714" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }
@@ -295,39 +282,10 @@ const ProfileOutline = () => {
 
 const ProfileFilled = () => {
   return (
-    <svg width="25" height="31" viewBox="0 0 25 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_570_413)">
-        <circle cx="12.5789" cy="7.27803" r="4.77803" fill="#5956E9" />
-        <circle cx="12.5789" cy="7.27803" r="4.77803" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <g filter="url(#filter1_d_570_413)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.00002 18.7013C4.99873 18.3654 5.07385 18.0336 5.2197 17.7311C5.67736 16.8157 6.96798 16.3306 8.03892 16.1109C8.81128 15.9461 9.59431 15.836 10.3822 15.7814C11.8408 15.6533 13.3079 15.6533 14.7666 15.7814C15.5544 15.8366 16.3374 15.9467 17.1099 16.1109C18.1808 16.3306 19.4714 16.77 19.9291 17.7311C20.2224 18.3479 20.2224 19.0639 19.9291 19.6807C19.4714 20.6418 18.1808 21.0812 17.1099 21.2917C16.3384 21.4633 15.5551 21.5766 14.7666 21.6304C13.5794 21.731 12.3866 21.7494 11.1968 21.6853C10.9222 21.6853 10.6568 21.6853 10.3822 21.6304C9.59663 21.5772 8.81632 21.464 8.04807 21.2917C6.96798 21.0812 5.68652 20.6418 5.2197 19.6807C5.0746 19.3746 4.99955 19.04 5.00002 18.7013Z" fill="#5956E9" />
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.00002 18.7013C4.99873 18.3654 5.07385 18.0336 5.2197 17.7311C5.67736 16.8157 6.96798 16.3306 8.03892 16.1109C8.81128 15.9461 9.59431 15.836 10.3822 15.7814C11.8408 15.6533 13.3079 15.6533 14.7666 15.7814C15.5544 15.8366 16.3374 15.9467 17.1099 16.1109C18.1808 16.3306 19.4714 16.77 19.9291 17.7311C20.2224 18.3479 20.2224 19.0639 19.9291 19.6807C19.4714 20.6418 18.1808 21.0812 17.1099 21.2917C16.3384 21.4633 15.5551 21.5766 14.7666 21.6304C13.5794 21.731 12.3866 21.7494 11.1968 21.6853C10.9222 21.6853 10.6568 21.6853 10.3822 21.6304C9.59663 21.5772 8.81632 21.464 8.04807 21.2917C6.96798 21.0812 5.68652 20.6418 5.2197 19.6807C5.0746 19.3746 4.99955 19.04 5.00002 18.7013Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <defs>
-        <filter id="filter0_d_570_413" x="3.0509" y="1.75" width="19.056" height="19.0562" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_413" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_413" result="shape" />
-        </filter>
-        <filter id="filter1_d_570_413" x="0.25" y="14.9353" width="24.649" height="15.5374" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_413" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_413" result="shape" />
-        </filter>
-      </defs>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11.5789" cy="7.27803" r="4.77803" fill="#5956E9" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.00002 18.7013C3.99873 18.3654 4.07385 18.0336 4.2197 17.7311C4.67736 16.8157 5.96798 16.3306 7.03892 16.1109C7.81128 15.9461 8.59431 15.836 9.38217 15.7814C10.8408 15.6533 12.3079 15.6533 13.7666 15.7814C14.5544 15.8366 15.3374 15.9467 16.1099 16.1109C17.1808 16.3306 18.4714 16.77 18.9291 17.7311C19.2224 18.3479 19.2224 19.0639 18.9291 19.6807C18.4714 20.6418 17.1808 21.0812 16.1099 21.2917C15.3384 21.4633 14.5551 21.5766 13.7666 21.6304C12.5794 21.731 11.3866 21.7494 10.1968 21.6853C9.92221 21.6853 9.65677 21.6853 9.38217 21.6304C8.59663 21.5772 7.81632 21.464 7.04807 21.2917C5.96798 21.0812 4.68652 20.6418 4.2197 19.6807C4.0746 19.3746 3.99955 19.04 4.00002 18.7013Z" fill="#5956E9" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-
   )
 }
 
@@ -345,49 +303,11 @@ const CartOutlined = () => {
 
 const CartFilled = () => {
   return (
-    <svg width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_570_414)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.42233 19.8203C9.84433 19.8203 10.1873 20.1633 10.1873 20.5853C10.1873 21.0073 9.84433 21.3493 9.42233 21.3493C9.00033 21.3493 8.65833 21.0073 8.65833 20.5853C8.65833 20.1633 9.00033 19.8203 9.42233 19.8203Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
-      </g>
-      <g filter="url(#filter1_d_570_414)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M20.6747 19.8203C21.0967 19.8203 21.4397 20.1633 21.4397 20.5853C21.4397 21.0073 21.0967 21.3493 20.6747 21.3493C20.2527 21.3493 19.9097 21.0073 19.9097 20.5853C19.9097 20.1633 20.2527 19.8203 20.6747 19.8203Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
-      </g>
-      <g filter="url(#filter2_d_570_414)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.74988 3.25L6.82988 3.61L7.79288 15.083C7.87088 16.018 8.65188 16.736 9.58988 16.736H20.5019C21.3979 16.736 22.1579 16.078 22.2869 15.19L23.2359 8.632C23.3529 7.823 22.7259 7.099 21.9089 7.099H7.16388" fill="#5956E9" />
-        <path d="M4.74988 3.25L6.82988 3.61L7.79288 15.083C7.87088 16.018 8.65188 16.736 9.58988 16.736H20.5019C21.3979 16.736 22.1579 16.078 22.2869 15.19L23.2359 8.632C23.3529 7.823 22.7259 7.099 21.9089 7.099H7.16388" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <defs>
-        <filter id="filter0_d_570_414" x="3.90833" y="19.0703" width="11.0291" height="11.0291" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_414" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_414" result="shape" />
-        </filter>
-        <filter id="filter1_d_570_414" x="15.1597" y="19.0703" width="11.03" height="11.0291" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_414" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_414" result="shape" />
-        </filter>
-        <filter id="filter2_d_570_414" x="-0.000244141" y="2.49976" width="28.0004" height="22.9863" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_414" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_414" result="shape" />
-        </filter>
-      </defs>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42233 19.8203C7.84433 19.8203 8.18733 20.1633 8.18733 20.5853C8.18733 21.0073 7.84433 21.3493 7.42233 21.3493C7.00033 21.3493 6.65833 21.0073 6.65833 20.5853C6.65833 20.1633 7.00033 19.8203 7.42233 19.8203Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.6747 19.8203C19.0967 19.8203 19.4397 20.1633 19.4397 20.5853C19.4397 21.0073 19.0967 21.3493 18.6747 21.3493C18.2527 21.3493 17.9097 21.0073 17.9097 20.5853C17.9097 20.1633 18.2527 19.8203 18.6747 19.8203Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.74988 3.25L4.82988 3.61L5.79288 15.083C5.87088 16.018 6.65188 16.736 7.58988 16.736H18.5019C19.3979 16.736 20.1579 16.078 20.2869 15.19L21.2359 8.632C21.3529 7.823 20.7259 7.099 19.9089 7.099H5.16388" fill="#5956E9" />
+      <path d="M2.74988 3.25L4.82988 3.61L5.79288 15.083C5.87088 16.018 6.65188 16.736 7.58988 16.736H18.5019C19.3979 16.736 20.1579 16.078 20.2869 15.19L21.2359 8.632C21.3529 7.823 20.7259 7.099 19.9089 7.099H5.16388" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 
   )
@@ -395,47 +315,19 @@ const CartFilled = () => {
 
 const HeartOutlined = () => {
   return (
-    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M10.761 18.8538C8.5904 17.5179 6.57111 15.9456 4.73929 14.1652C3.45144 12.8829 2.47101 11.3198 1.8731 9.59539C0.797144 6.25031 2.05393 2.42083 5.57112 1.28752C7.41961 0.692435 9.43845 1.03255 10.9961 2.20148C12.5543 1.03398 14.5725 0.693978 16.4211 1.28752C19.9383 2.42083 21.2041 6.25031 20.1281 9.59539C19.5302 11.3198 18.5498 12.8829 17.2619 14.1652C15.4301 15.9456 13.4108 17.5179 11.2402 18.8538L11.0051 19L10.761 18.8538Z" stroke="#200E32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M14.7394 5.05298C15.8047 5.39328 16.5616 6.34968 16.6562 7.47496" stroke="#200E32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.761 20.8538C9.5904 19.5179 7.57111 17.9456 5.73929 16.1652C4.45144 14.8829 3.47101 13.3198 2.8731 11.5954C1.79714 8.25031 3.05393 4.42083 6.57112 3.28752C8.41961 2.69243 10.4384 3.03255 11.9961 4.20148C13.5543 3.03398 15.5725 2.69398 17.4211 3.28752C20.9383 4.42083 22.2041 8.25031 21.1281 11.5954C20.5302 13.3198 19.5498 14.8829 18.2619 16.1652C16.4301 17.9456 14.4108 19.5179 12.2402 20.8538L12.0051 21L11.761 20.8538Z" stroke="#200E32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M15.7394 7.05298C16.8047 7.39328 17.5616 8.34968 17.6562 9.47496" stroke="#200E32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }
 
 const HeartFilled = () => {
   return (
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_570_415)">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.761 20.8538C12.5904 19.5179 10.5711 17.9456 8.73929 16.1652C7.45144 14.8829 6.47101 13.3198 5.8731 11.5954C4.79714 8.25031 6.05393 4.42083 9.57112 3.28752C11.4196 2.69243 13.4384 3.03255 14.9961 4.20148C16.5543 3.03398 18.5725 2.69398 20.4211 3.28752C23.9383 4.42083 25.2041 8.25031 24.1281 11.5954C23.5302 13.3198 22.5498 14.8829 21.2619 16.1652C19.4301 17.9456 17.4108 19.5179 15.2402 20.8538L15.0051 21L14.761 20.8538Z" fill="#5956E9" />
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.761 20.8538C12.5904 19.5179 10.5711 17.9456 8.73929 16.1652C7.45144 14.8829 6.47101 13.3198 5.8731 11.5954C4.79714 8.25031 6.05393 4.42083 9.57112 3.28752C11.4196 2.69243 13.4384 3.03255 14.9961 4.20148C16.5543 3.03398 18.5725 2.69398 20.4211 3.28752C23.9383 4.42083 25.2041 8.25031 24.1281 11.5954C23.5302 13.3198 22.5498 14.8829 21.2619 16.1652C19.4301 17.9456 17.4108 19.5179 15.2402 20.8538L15.0051 21L14.761 20.8538Z" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      </g>
-      <g filter="url(#filter1_d_570_415)">
-        <path d="M18.7394 7.05298C19.8047 7.39328 20.5616 8.34968 20.6562 9.47496" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
-      </g>
-      <defs>
-        <filter id="filter0_d_570_415" x="0.753418" y="2.25" width="28.4933" height="27.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_415" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_415" result="shape" />
-        </filter>
-        <filter id="filter1_d_570_415" x="13.9891" y="6.30273" width="11.4171" height="11.9224" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_570_415" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_570_415" result="shape" />
-        </filter>
-      </defs>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.761 20.8538C9.5904 19.5179 7.57111 17.9456 5.73929 16.1652C4.45144 14.8829 3.47101 13.3198 2.8731 11.5954C1.79714 8.25031 3.05393 4.42083 6.57112 3.28752C8.41961 2.69243 10.4384 3.03255 11.9961 4.20148C13.5543 3.03398 15.5725 2.69398 17.4211 3.28752C20.9383 4.42083 22.2041 8.25031 21.1281 11.5954C20.5302 13.3198 19.5498 14.8829 18.2619 16.1652C16.4301 17.9456 14.4108 19.5179 12.2402 20.8538L12.0051 21L11.761 20.8538Z" fill="#5956E9" stroke="#5956E9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M15.7394 7.05298C16.8047 7.39328 17.5616 8.34968 17.6562 9.47496" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-
   )
 }
 
