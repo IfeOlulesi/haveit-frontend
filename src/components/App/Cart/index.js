@@ -1,8 +1,9 @@
-import React, { useEffect } from"react"
+import React from "react"
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, increaseQuantity, decreaseQuantity, removeItem} from "../../../reducers/cartSlice";
+import { increaseQuantity, decreaseQuantity, removeItem} from "../../../reducers/cartSlice";
 import { home } from '../../../reducers/appSlice';
+import { openSurvey } from "../../../reducers/surveySlice";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -49,23 +50,9 @@ const useStyles = makeStyles((theme) => ({
     width: "240px",
     height: "240px",
   },
-  productInfoContainer:{
-    backgroundColor: "#FFFFFF",
-    flexGrow: 1,
-    borderTopLeftRadius: "30px",
-    borderTopRightRadius: "30px",
-    boxShadow: "0px 4px 10px 5px rgba(0, 0, 0, 0.2)",
-    padding: "2em",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
   addToCartButton: {
     textTransform: "none",
   },
-
-
-  /////////////////////
   pageTitle: {
     color: "black",
   },
@@ -146,6 +133,10 @@ const Cart = () => {
     dispatch(removeItem(productId));
   }
 
+  const checkout = () => {
+    dispatch(openSurvey());
+  }
+
   return (
     <>
       <Dialog 
@@ -214,6 +205,7 @@ const Cart = () => {
           <Button 
             variant="contained" color="primary" 
             fullWidth size="large" className={classes.addToCartButton}
+            onClick={checkout}
           >
             <p style={{fontSize: "20px" }} className="font-rb-semibold">Checkout</p>
           </Button>

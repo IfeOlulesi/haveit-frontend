@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProductInViewId, updateProductInViewType } from "../../../reducers/productSlice";
+
 import "./index.css"
 
-import appleWatch from "./Mask Group.png";
+
 import ProductDetails from "../ProductDetails"; 
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -47,26 +50,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Wearables = ({ setProductDetailsOpen }) => {
+const Products = ({ value, setProductDetailsOpen }) => {
+  
+  const dispatch = useDispatch();
+  const wearables = useSelector(state => state.products.wearables);
+  const furniture = useSelector(state => state.products.furniture);
 
-  const openProductDetailsPage = () => setProductDetailsOpen(true);
+  const productsDict = {
+    "wearables": wearables,
+    "furniture": furniture,
+  }
 
-  const products = [
-    {imgSrc: "", prodName: "Apple Watch", sDesc: "Series 6 . Red", price: "$359"},
-    {imgSrc: "", prodName: "Mango Watch", sDesc: "Series 6 . Yellow", price: "$253"},
-    {imgSrc: "", prodName: "Pineapple Watch", sDesc: "Series 6 . Green", price: "$3,393"},
-    {imgSrc: "", prodName: "Grape Watch", sDesc: "Series 6 . Purple", price: "$9,923"},
-    {imgSrc: "", prodName: "Watermelon Watch", sDesc: "Series 6 . Red", price: "$59"},
-  ]
+  const openProductDetailsPage = ( productId ) => {
+    
+    setProductDetailsOpen(true);
+    dispatch(updateProductInViewId(productId));
+    dispatch(updateProductInViewType(Object.keys(productsDict)[value]))
+  };
 
   return (
     <div id="wearable-container">
       <div id="products-slider">
-        {products.map((product) => {
+        {productsDict[Object.keys(productsDict)[value]].map((product) => {
           return (
-            <div className="product-container" onClick={openProductDetailsPage}>
-              <img src={appleWatch} alt="apple watch" className="apple-watch"/>
-              <Typography variant="subtitle1" className="prim-text font-rb-semibold" style={{marginTop: "-20px",}}>{product.prodName}</Typography>
+            <div className="product-container" onClick={() => openProductDetailsPage(product.id)}>
+              <img src={product.imgSrc} alt="apple watch" className="apple-watch"/>
+              <Typography variant="subtitle1" className="prim-text font-rb-semibold" style={{marginTop: "10px",}}>{product.prodName}</Typography>
               <Typography variant="subtitle2" className="sec-text font-rb-medium">{product.sDesc}</Typography>
               <Typography variant="body1" className="price font-rb-bold">{product.price}</Typography>
             </div>
@@ -76,16 +85,7 @@ const Wearables = ({ setProductDetailsOpen }) => {
     </div>
   )
 }
-const Laptops = () => {
-  return (
-    <p>You can view laptops here</p>
-  )
-}
-const Phones = () => {
-  return (
-    <p>You can view phones here</p>
-  )
-}
+
 
 const PageContent = () => {
   const classes = useStyles();
@@ -106,14 +106,12 @@ const PageContent = () => {
           <div className={classes.demo1}>
             <AntTabs value={value} onChange={handleChange} aria-label="ant example">
               <AntTab label="Wearables" />
-              <AntTab label="Laptops" />
-              <AntTab label="Phones" />
+              <AntTab label="Furniture" />
+              {/* <AntTab label="Phones" /> */}
             </AntTabs>
             
             <div id="tab-Content-container">
-              {value === 0 && <Wearables setProductDetailsOpen={setProductDetailsOpen} />}
-              {value === 1 && <Laptops />}
-              {value === 2 && <Phones />}
+              <Products value={value} setProductDetailsOpen={setProductDetailsOpen} />
             </div>
           </div>
         </div>

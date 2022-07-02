@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { cart } from '../../../reducers/appSlice';
 import "./index.css";
 
@@ -14,7 +15,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from "@material-ui/core/Typography";
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
 
-import AppleWatch from "./apple-watch.png"
 import { EyeGlassesIcon } from "../../icons";
 
 import ARView from "../ARView";
@@ -73,14 +73,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const ProductDetails = ({open, setOpen}) => {
   const classes = useStyles();
-
-  const [ARViewOpen, setARViewOpen] = useState(false);
-  // const [cartOpen, setCartOpen] = useState(false);
-
   const dispatch = useDispatch();
 
-  // const cartState = useSelector(state => state.cart.products)
-  // const currentTab = useSelector(state => state.app.currentTab)
+  const [ARViewOpen, setARViewOpen] = useState(false);
+
+  const productInViewId = useSelector(state => state.products.productInViewId);
+  const productInViewType = useSelector(state => state.products.productInViewType);
+  const categoryProducts = useSelector(state => state.products[productInViewType]);
+  const particularProduct = categoryProducts.filter((el) => el.id === productInViewId)[0];
+  
 
   const handleClose = () => {
     setOpen(false);
@@ -121,11 +122,11 @@ const ProductDetails = ({open, setOpen}) => {
         </AppBar>
         
         <div className={classes.imageContainer}>
-          <img className={classes.productImage} src={AppleWatch} alt="Apple Watch" />
+          <img className={classes.productImage} src={particularProduct.imgSrc} alt="thumbnail" />
         </div>
 
           <div className={`${classes.productInfoContainer}`}>
-            <Typography variant="h5">2020 Apple Watch 6.2"</Typography>
+            <Typography variant="h5">{particularProduct.prodName}</Typography>
             <div>
               <div style={{
                 display: "flex", flexDirection: "row", 
@@ -151,7 +152,6 @@ const ProductDetails = ({open, setOpen}) => {
       </Dialog>
 
       <ARView open={ARViewOpen} setOpen={setARViewOpen} />
-      {/* <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} /> */}
     </>
   )
 }

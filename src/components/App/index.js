@@ -19,6 +19,7 @@ import AppNavBar from "./AppNavbar";
 import PageContent from "./PageContent";
 
 import Cart from "./Cart";
+import Survey from "./Survey";
 
 const useStyles = makeStyles((theme) => ({
   webAppContainer: {
@@ -68,6 +69,7 @@ const MainApp = () => {
       </div>
 
       <Cart />
+      <Survey />
     </div>
   )
 }

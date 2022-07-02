@@ -19,7 +19,6 @@ export const appSlice = createSlice({
     },
     cart: (state, action) => {
       state.currentTab = "cart"
-      console.log(action)
     },
   }
 })
