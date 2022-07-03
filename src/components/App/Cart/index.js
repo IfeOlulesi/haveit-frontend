@@ -1,4 +1,9 @@
-import React from"react"
+import React from "react"
+
+import { useSelector, useDispatch } from 'react-redux';
+import { increaseQuantity, decreaseQuantity, removeItem} from "../../../reducers/cartSlice";
+import { home } from '../../../reducers/appSlice';
+import { openSurvey } from "../../../reducers/surveySlice";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -13,7 +18,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
 import { DeleteIcon } from "../../icons";
 
-import tempProductImage from "./image 15.png"
+import tempProductImage from "./image 15.png";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -45,23 +50,9 @@ const useStyles = makeStyles((theme) => ({
     width: "240px",
     height: "240px",
   },
-  productInfoContainer:{
-    backgroundColor: "#FFFFFF",
-    flexGrow: 1,
-    borderTopLeftRadius: "30px",
-    borderTopRightRadius: "30px",
-    boxShadow: "0px 4px 10px 5px rgba(0, 0, 0, 0.2)",
-    padding: "2em",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
   addToCartButton: {
     textTransform: "none",
   },
-
-
-  /////////////////////
   pageTitle: {
     color: "black",
   },
@@ -90,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
   productQuantityWidget: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
   },
   productQuantityDetailWidget: {
     display: "flex",
@@ -116,39 +108,34 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
-const Cart = ({ cartOpen, setCartOpen}) => {
+const Cart = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const cartState = useSelector(state => state.cart.products)
+  const currentTab = useSelector(state => state.app.currentTab)
+
+  let cartOpen = currentTab === "cart";
 
   const handleClose = () => {
-    setCartOpen(false);
+    dispatch(home());
   }
 
-  const productsInCart = [
-    {
-      name: "2020 Apple iPad Air 10.9",
-      price: "$579.00",
-      amount: 1,
-      imgUrl: tempProductImage,
-    },
-    {
-      name: "APPLE AirPods Pro-White",
-      price: "$375.00",
-      amount: 3,
-      imgUrl: tempProductImage,
-    },
-    {
-      name: "Leather Sofa Two-seater Brown",
-      price: "$200.00",
-      amount: 1,
-      imgUrl: tempProductImage,
-    },
-    {
-      name: "Yamaha Trumpet Silver",
-      price: "$342.00",
-      amount: 1,
-      imgUrl: tempProductImage,
-    },
-  ]
+  const incrementQuantity = (productId) => {
+    dispatch(increaseQuantity(productId));
+  }
+
+  const decrementQuantity = (productId) => {
+    dispatch(decreaseQuantity(productId));
+  }
+
+  const deleteProduct = (productId) => {
+    dispatch(removeItem(productId));
+  }
+
+  const checkout = () => {
+    dispatch(openSurvey());
+  }
 
   return (
     <>
@@ -170,18 +157,18 @@ const Cart = ({ cartOpen, setCartOpen}) => {
             </IconButton>
             <p className={`font-rb-semibold ${classes.pageTitle}`}>Cart</p>
             <IconButton>
-              <DeleteIcon fillColor={"red"} width="24" height={"24"} />
+              <DeleteIcon fillColor={"#d74b4b"} width="24" height={"24"} />
             </IconButton>
           </Toolbar>
         </AppBar>
         
         <div className={classes.cartContent}>
           {
-            productsInCart.map((product) => {
+            cartState.map((product) => {
               return (
                 <div className={classes.productContainer}>
                   <div>
-                    <img src={product.imgUrl} alt="productImage" />
+                    <img src={tempProductImage} alt="productImage" />
                   </div>
                   <div className={classes.productInfoContainer}>
                     <div className={`font-rb-semibold`}>{product.name}</div>
@@ -189,9 +176,12 @@ const Cart = ({ cartOpen, setCartOpen}) => {
                     <div className={`${classes.productQuantityWidget}`}>
                       <Typography variant="body1" style={{fontSize: "14px",}}>Quantity</Typography>
                       <div className={classes.productQuantityDetailWidget}>
-                        <Typography variant="body1" style={{marginLeft: "1em",}} className={classes.productQuantityEditButtons}>-</Typography>
+                        <Typography variant="body1" className={classes.productQuantityEditButtons} onClick={() => decrementQuantity(product.id)}>-</Typography>
                         <Typography variant="body1" style={{margin: "0 4px 0 4px", fontSize: "16px",}}>{product.amount}</Typography>
-                        <Typography variant="body1" className={classes.productQuantityEditButtons}>+</Typography>
+                        <Typography variant="body1" className={classes.productQuantityEditButtons} onClick={() => incrementQuantity(product.id)}>+</Typography>
+                      </div>
+                      <div style={{cursor: "pointer"}} onClick={() => deleteProduct(product.id)}>
+                        <DeleteIcon fillColor={"#d74b4b"} />
                       </div>
                     </div>
                   </div>
@@ -215,6 +205,7 @@ const Cart = ({ cartOpen, setCartOpen}) => {
           <Button 
             variant="contained" color="primary" 
             fullWidth size="large" className={classes.addToCartButton}
+            onClick={checkout}
           >
             <p style={{fontSize: "20px" }} className="font-rb-semibold">Checkout</p>
           </Button>

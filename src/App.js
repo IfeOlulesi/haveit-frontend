@@ -14,18 +14,8 @@ import {
   Route,
 } from "react-router-dom";
 
-// var request = require("request");
-
-// var options = { method: 'POST',
-//   url: 'https://dev-8gitaj8h.us.auth0.com/oauth/token',
-//   headers: { 'content-type': 'application/json', "Access-Control-Allow-Origin": "https://dev-8gitaj8h.us.auth0.com/oauth/token" },
-//   body: '{"client_id":"C79sOgFUFNIOk4q4h81yUaa451Rc656j","client_secret":"p1oArMM3CzSFD0o717iZqf3gKifMoEZQT_FCtHi0Py0l-SsVkoHz_CMn1B8N_rIZ","audience":"https://dev-8gitaj8h.us.auth0.com/api/v2/","grant_type":"client_credentials"}' };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-
-//   console.log(body);
-// });
+import { Provider } from "react-redux";
+import store from './store.js';
 
 const projectColors = {
   primary: "#5956E9", // purple
@@ -62,20 +52,22 @@ const App = () => {
   }, [isLoading])
 
   return (
-    <ThemeProvider theme = {theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element = {<WebSite />} />
-          <Route path = "/app" element = {
-            isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
-            <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
-              <MainApp />
-            </RequireAuth>
-            } 
-          />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme = {theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element = {<WebSite />} />
+            <Route path = "/app" element = {
+              isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
+              <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
+                <MainApp />
+              </RequireAuth>
+              } 
+            />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

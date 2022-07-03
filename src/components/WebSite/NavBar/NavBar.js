@@ -115,7 +115,7 @@ const NavBar = ({ scrollTop }) => {
         }}>
       <div className={classes.logoContaier}>
         <Logo className={classes.navbarLogo} />
-        <h2 className={`font-rb-bold ${classes.navbarLogoName}`}>HaveIt</h2>
+        <h2 className={`font-rb-bold ${classes.navbarLogoName}`}>Haveit</h2>
       </div>
       <div className={`${classes.displayFlex} ${classes.hamburgerContainer}`}>
         <button className={`${classes.hamButton}`} onMouseLeave={handleLeave}>
