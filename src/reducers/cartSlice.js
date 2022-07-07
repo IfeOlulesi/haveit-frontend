@@ -1,58 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const priceToNum =(price) => {
+  return Number(price.split('').filter((el) => parseInt(el)  ).join(''))
+}
+
 export const cartSlice = createSlice({
   name: 'cart',
 
   initialState: {
-    products: [
-      {
-        id: 1,
-        name: "2020 Apple iPad Air 10.9",
-        price: "$579.00",
-        amount: 1,
-        // imgUrl: tempProductImage,
-      },
-      {
-        id: 2,
-        name: "APPLE AirPods Pro-White",
-        price: "$375.00",
-        amount: 3,
-        // imgUrl: tempProductImage,
-      },
-      {
-        id: 3,
-        name: "Leather Sofa Two-seater Brown",
-        price: "$200.00",
-        amount: 1,
-        // imgUrl: tempProductImage,
-      },
-      {
-        id: 4,
-        name: "Yamaha Trumpet Silver",
-        price: "$342.00",
-        amount: 1,
-        // imgUrl: tempProductImage,
-      },
-    ],
+    products: [],
+    totalPrice: 0,
   },
   
   reducers: {
     addItem: (state, action) => {
-      state.products.push(action.payload);
+
+      let {prodName, price, id } = action.payload
+      let productExists = state.products.findIndex((el) => {
+        return el.id === id
+      }) > -1;
+      
+      if (productExists) {
+        state.products = state.products.map((item) => item.id === id ? {...item, quantity: item.quantity + 1} : item)
+      } 
+      else {
+        let model = {
+          id, price,
+          name: prodName,
+          quantity: 1,
+        }
+        state.products.push(model);
+      }
     },
     increaseQuantity: (state, action) => {
       let subjectArray = state.products.filter(product => product.id === action.payload )
       if (subjectArray.length > 0) {
-        subjectArray[0].amount += 1
+        subjectArray[0].quantity += 1
       }
     },
     decreaseQuantity: (state, action) => {
       let subjectArray = state.products.filter(product => product.id === action.payload )
       if (subjectArray.length > 0) {
-        if (subjectArray[0].amount > 1) {
-          subjectArray[0].amount -= 1
+        if (subjectArray[0].quantity > 1) {
+          subjectArray[0].quantity -= 1
         }
-        else if (subjectArray[0].amount > 0) {
+        else if (subjectArray[0].quantity > 0) {
           let productIndex = state.products.findIndex(product => product.id === action.payload);
           if (productIndex > -1) {
             state.products.pop(productIndex);
@@ -63,13 +55,21 @@ export const cartSlice = createSlice({
     removeItem: (state, action) => {
       let productIndex = state.products.findIndex(product => product.id === action.payload);
       if (productIndex > -1) {
-        state.products.pop(productIndex);
+        state.products = state.products.filter((el) => el.id !== productIndex)
+
+        // state.products.pop(productIndex);
       }
     },
+    clearCart: (state, action) => {
+      state.products = [];
+    },
+    updateTotalPrice: (state, action) => {
+      state.totalPrice = state.products.reduce((acc, curr) => acc + (priceToNum(curr.price) * curr.quantity), 0);
+    }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, increaseQuantity, decreaseQuantity, removeItem} = cartSlice.actions
+export const { addItem, increaseQuantity, decreaseQuantity, removeItem, clearCart, updateTotalPrice} = cartSlice.actions
 
 export default cartSlice.reducer
