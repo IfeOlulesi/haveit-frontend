@@ -1,5 +1,5 @@
-# HaveIt-frontend
-An e-commerce application that allows users view products in AR
+# Haveit-frontend
+An e-commerce application that harnesses the power of Augmented Reality🕶 to give customers an unforgettable shopping experience.
 
 # Getting Started with Create React App
 
