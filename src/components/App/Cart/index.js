@@ -20,7 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
 import { DeleteIcon } from "../../icons";
 
-import tempProductImage from "./image 15.png";
+// import tempProductImage from "./image 15.png";
 import cartEmptyImage from "../images/cart-empty-placeholder.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,8 +50,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 0.1,
   },
   productImage: {
-    width: "240px",
-    height: "240px",
+    maxHeight: "4.5rem",
+  },
+  productImageContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    flexGrow: 1,
   },
   addToCartButton: {
     textTransform: "none",
@@ -83,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.6s",
     justifyContent: "space-between",
     overflow: "scroll",
+    minHeight: "8rem",
   },
   productInfoContainer: {
     display: "flex",
@@ -129,9 +136,6 @@ const useStyles = makeStyles((theme) => ({
     width: "15rem",
     marginTop: "0.5rem"
   },
-  productImage: {
-
-  }
 
 }));
 
@@ -205,7 +209,7 @@ const Cart = () => {
               cartState.map((product) => {
                 return (
                   <div className={classes.productContainer}>
-                    <div>
+                    <div className={classes.productImageContainer}>
                       <img src={product.imgSrc} alt="productImage" className={classes.productImage} />
                     </div>
                     <div className={classes.productInfoContainer}>

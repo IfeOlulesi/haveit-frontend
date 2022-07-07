@@ -14,8 +14,8 @@ export const cartSlice = createSlice({
   
   reducers: {
     addItem: (state, action) => {
-
-      let {prodName, price, id } = action.payload
+      console.log(action.payload)
+      let {prodName, price, id, imgSrc } = action.payload
       let productExists = state.products.findIndex((el) => {
         return el.id === id
       }) > -1;
@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
           id, price,
           name: prodName,
           quantity: 1,
+          imgSrc
         }
         state.products.push(model);
       }

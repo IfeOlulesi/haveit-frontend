@@ -1,8 +1,8 @@
 import React, {useEffect, useState, useRef, Suspense } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useLoader, useFrame, Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// import { useLoader, useFrame, Canvas } from "@react-three/fiber";
+// import { OrbitControls } from "@react-three/drei";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { toast } from 'react-toastify';
 import { addItem } from "../../../reducers/cartSlice";
 import { makeStyles } from '@material-ui/core/styles';
@@ -67,6 +67,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  shortDescriptionContainer: {
+
+  },
+  shortDescriptionTitle: {
+    fontSize: "1.2rem",
+    paddingTop: "16px",
+  },
+  shortDescriptionBody: {
+    color: "#787878",
+    paddingTop: "9px",
+  },
   addToCartButton: {
     textTransform: "none",
   }
@@ -77,42 +88,42 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-const GltfModel = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
-  const ref = useRef();
-  const gltf = useLoader(GLTFLoader, modelPath);
-  // const [hovered, hover] = useState(false);
+// const GltfModel = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
+//   const ref = useRef();
+//   const gltf = useLoader(GLTFLoader, modelPath);
+//   // const [hovered, hover] = useState(false);
 
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.y += 0.003));
-  return (
-    <>
-      <primitive
-        ref={ref}
-        object={gltf.scene}
-        position={position}
-        scale={scale}
-        // onPointerOver={(event) => hover(true)}
-        // onPointerOut={(event) => hover(false)}
-      />
-    </>
-  );
-};
+//   // Subscribe this component to the render-loop, rotate the mesh every frame
+//   useFrame((state, delta) => (ref.current.rotation.y += 0.003));
+//   return (
+//     <>
+//       <primitive
+//         ref={ref}
+//         object={gltf.scene}
+//         position={position}
+//         scale={scale}
+//         // onPointerOver={(event) => hover(true)}
+//         // onPointerOut={(event) => hover(false)}
+//       />
+//     </>
+//   );
+// };
 
-const ModelViewer = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
-  return (
-    <Canvas>
-      <hemisphereLight intensity={1} skyColor="0xffeeb1" groundColor={"0x080820"}/>
-      <ambientLight intensity={0.6} />
-      <directionalLight intensity={0.4} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
-      <Suspense fallback={null}>
-        <GltfModel modelPath={modelPath} scale={scale} position={position} />
-        <OrbitControls />
-      </Suspense>
-    </Canvas>
-  );
-};
+// const ModelViewer = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
+//   return (
+//     <Canvas>
+//       <hemisphereLight intensity={1} skyColor="0xffeeb1" groundColor={"0x080820"}/>
+//       <ambientLight intensity={0.6} />
+//       <directionalLight intensity={0.4} />
+//       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+//       <pointLight position={[-10, -10, -10]} />
+//       <Suspense fallback={null}>
+//         <GltfModel modelPath={modelPath} scale={scale} position={position} />
+//         <OrbitControls />
+//       </Suspense>
+//     </Canvas>
+//   );
+// };
 
 
 const ProductDetails = ({open, setOpen}) => {
@@ -194,6 +205,10 @@ const ProductDetails = ({open, setOpen}) => {
 
           <div className={`${classes.productInfoContainer}`}>
             <Typography variant="h5">{particularProduct.prodName}</Typography>
+            <div>
+              <div className={`font-rb-semibold ${classes.shortDescriptionTitle}`}> Newbies discount!🎉 </div>
+              <div className= {`font-rb-regular ${classes.shortDescriptionBody}`}> We give 60% discount off all our products for every new customer that joins us for the first 3 months! </div>
+            </div>
             <div>
               <div style={{
                 display: "flex", flexDirection: "row", 
