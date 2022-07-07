@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Badge from '@material-ui/core/Badge';
 import { useSelector, useDispatch } from "react-redux";
 import { updateProductInViewId, updateProductInViewType } from "../../../reducers/productSlice";
-
+import { EyeGlassesIcon } from "../../icons";
 import "./index.css"
 
 
@@ -57,12 +58,11 @@ const Products = ({ value, setProductDetailsOpen }) => {
   const furniture = useSelector(state => state.products.furniture);
 
   const productsDict = {
-    "wearables": wearables,
     "furniture": furniture,
+    "wearables": wearables,
   }
 
   const openProductDetailsPage = ( productId ) => {
-    
     setProductDetailsOpen(true);
     dispatch(updateProductInViewId(productId));
     dispatch(updateProductInViewType(Object.keys(productsDict)[value]))
@@ -73,12 +73,14 @@ const Products = ({ value, setProductDetailsOpen }) => {
       <div id="products-slider">
         {productsDict[Object.keys(productsDict)[value]].map((product) => {
           return (
-            <div className="product-container" onClick={() => openProductDetailsPage(product.id)}>
-              <img src={product.imgSrc} alt="apple watch" className="apple-watch"/>
-              <Typography variant="subtitle1" className="prim-text font-rb-semibold" style={{marginTop: "10px",}}>{product.prodName}</Typography>
-              <Typography variant="subtitle2" className="sec-text font-rb-medium">{product.sDesc}</Typography>
-              <Typography variant="body1" className="price font-rb-bold">{product.price}</Typography>
-            </div>
+            <Badge badgeContent={"AR"} color="primary" invisible={!product.ARViewable} key={product.id}>
+              <div className="product-container" onClick={() => openProductDetailsPage(product.id)}>
+                <img src={product.imgSrc} alt="apple watch" className="apple-watch"/>
+                <Typography variant="subtitle1" className="prim-text font-rb-semibold" style={{marginTop: "10px",}}>{product.prodName}</Typography>
+                <Typography variant="subtitle2" className="sec-text font-rb-medium">{product.sDesc}</Typography>
+                <Typography variant="body1" className="price font-rb-bold">{product.price}</Typography>
+              </div>
+            </Badge>
           )
         })}
       </div>
@@ -105,8 +107,8 @@ const PageContent = () => {
         <div id="products-container">
           <div className={classes.demo1}>
             <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-              <AntTab label="Wearables" />
               <AntTab label="Furniture" />
+              <AntTab label="Wearables" />
               {/* <AntTab label="Phones" /> */}
             </AntTabs>
             

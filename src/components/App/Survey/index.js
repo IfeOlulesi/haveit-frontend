@@ -2,7 +2,6 @@ import React from "react"
 
 import { useSelector, useDispatch } from 'react-redux';
 import { closeSurvey } from "../../../reducers/surveySlice";
-
 import { makeStyles } from '@material-ui/core/styles';
 
 import Dialog from '@material-ui/core/Dialog';
@@ -48,13 +47,13 @@ const useStyles = makeStyles((theme) => ({
   },
   pageTitle: {
     color: "black",
+    marginLeft: "-2rem",
   },
   cartContent: {
     display: "flex",
     flexDirection: "column",
     overflow: "scroll",
     flexGrow: 1,
-    padding: "20px",
   },
 
 }));
@@ -93,16 +92,13 @@ const Survey = () => {
             </IconButton>
             <p className={`font-rb-semibold ${classes.pageTitle}`}>Feedback</p>
             <p></p>
-            {/* <IconButton>
-              <DeleteIcon fillColor={"#d74b4b"} width="24" height={"24"} />
-            </IconButton> */}
           </Toolbar>
         </AppBar>
         
         <div className={classes.cartContent}>
           <iframe 
-            title="Survey Form" 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSe37Y-2uSsc-ATNLKII0ws6Af-27K8B3olBH7V_x2y5yooPrg/viewform?embedded=true" 
+            title="Survey Form"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeidFXEXHoGAqfprV1lVHQb4f2z8mw7H2Ry2HnDHg3Ut8ylmg/viewform?embedded=true" 
             frameborder="0" marginheight="0" marginwidth="0"
             style={{
               flexGrow: 1,
@@ -111,26 +107,7 @@ const Survey = () => {
           >
             Loading…
           </iframe>
-        </div>
-
-        {/* <div style={{display: "flex", flexDirection: "column", padding: "20px"}}>
-          <div style={{
-            display: "flex", 
-            flexDirection: "row", 
-            justifyContent: "space-between",
-            marginBottom: "20px",
-          }}>
-            <Typography variant="body1" >Total</Typography>
-            <Typography style={{fontSize: "21px",}} color="primary" className="font-rb-semibold" variant="body1">$1,233.00</Typography>
-          </div>
-          <Button 
-            variant="contained" color="primary" 
-            fullWidth size="large" className={classes.addToCartButton}
-          >
-            <p style={{fontSize: "20px" }} className="font-rb-semibold">Checkout</p>
-          </Button>
-        </div> */}
-        
+        </div>        
       </Dialog>
     </>
   )

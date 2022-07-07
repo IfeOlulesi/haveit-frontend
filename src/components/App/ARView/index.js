@@ -47,7 +47,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <  Slide direction="left" ref={ref} {...props} />;
 });
 
-const ARView = ({open, setOpen}) => {
+const ARView = ({open, setOpen, ARLink}) => {
   const classes = useStyles()
 
   const [cartOpen, setCartOpen] = useState(false);
@@ -82,7 +82,8 @@ const ARView = ({open, setOpen}) => {
 
         <div className="ar-display">
           <iframe 
-            src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
+            // src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
+            src={ARLink}
             // width="340" height="600" 
             className="ar-view-iframe"
             allow="camera; accelerometer; vr" 
