@@ -1,10 +1,12 @@
-import React, {useState} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-
-import { cart } from '../../../reducers/appSlice';
-import "./index.css";
-
+import React, {useEffect, useState, useRef, Suspense } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useLoader, useFrame, Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { toast } from 'react-toastify';
+import { addItem } from "../../../reducers/cartSlice";
 import { makeStyles } from '@material-ui/core/styles';
+import { EyeGlassesIcon } from "../../icons";
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -12,11 +14,13 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from "@material-ui/core/Typography";
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
 
-import { EyeGlassesIcon } from "../../icons";
+// import modelImage from "../images/3dModels/scene.glb";
 
+import "./index.css";
 import ARView from "../ARView";
 
 
@@ -44,10 +48,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     marginTop: "20px",
-    flexGrow: 0.1,
+    // flexGrow: 0.1,
+    height: "300px",
+    maxHeight: "300px",
   },
   productImage: {
-    width: "240px",
+    width: "auto",
     height: "240px",
   },
   productInfoContainer:{
@@ -71,17 +77,56 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
+const GltfModel = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
+  const ref = useRef();
+  const gltf = useLoader(GLTFLoader, modelPath);
+  // const [hovered, hover] = useState(false);
+
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  useFrame((state, delta) => (ref.current.rotation.y += 0.003));
+  return (
+    <>
+      <primitive
+        ref={ref}
+        object={gltf.scene}
+        position={position}
+        scale={scale}
+        // onPointerOver={(event) => hover(true)}
+        // onPointerOut={(event) => hover(false)}
+      />
+    </>
+  );
+};
+
+const ModelViewer = ({ modelPath, scale = 20, position = [0, 0, 0] }) => {
+  return (
+    <Canvas>
+      <hemisphereLight intensity={1} skyColor="0xffeeb1" groundColor={"0x080820"}/>
+      <ambientLight intensity={0.6} />
+      <directionalLight intensity={0.4} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <pointLight position={[-10, -10, -10]} />
+      <Suspense fallback={null}>
+        <GltfModel modelPath={modelPath} scale={scale} position={position} />
+        <OrbitControls />
+      </Suspense>
+    </Canvas>
+  );
+};
+
+
 const ProductDetails = ({open, setOpen}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [ARViewOpen, setARViewOpen] = useState(false);
+  const [ARLink, setARLink] = useState("");
 
   const productInViewId = useSelector(state => state.products.productInViewId);
   const productInViewType = useSelector(state => state.products.productInViewType);
   const categoryProducts = useSelector(state => state.products[productInViewType]);
   const particularProduct = categoryProducts.filter((el) => el.id === productInViewId)[0];
-  
+
 
   const handleClose = () => {
     setOpen(false);
@@ -91,9 +136,20 @@ const ProductDetails = ({open, setOpen}) => {
     setARViewOpen(true);
   }
 
-  const openCart = () => {
-    dispatch(cart());
+  const addProductToCart = () => {
+    dispatch(addItem(particularProduct));
+
+    toast.success("Product added to cart! \nGo back to continue shopping👜", {
+      theme: 'colored',
+      toastId: 'addProductToCartSuccess',
+    });
   }
+
+  useEffect(() => {
+    if (particularProduct.ARViewable) {
+      setARLink(particularProduct.ARLink);
+    }
+  }, [particularProduct])
 
   return (
     <>
@@ -113,16 +169,27 @@ const ProductDetails = ({open, setOpen}) => {
             <IconButton edge="start" onClick={handleClose} aria-label="close">
               <KeyboardBackspaceRoundedIcon />
             </IconButton>
-            <div className="pulse">
-              <IconButton onClick={launchARView} aria-label="close">
-                <EyeGlassesIcon strokeColor={"#5956E9"} />
-              </IconButton>
-            </div>
+            {
+              particularProduct.ARViewable === true ?
+              <div className="pulse">
+                <IconButton onClick={launchARView} aria-label="close">
+                  <EyeGlassesIcon strokeColor={"#FFFFFF"} />
+                </IconButton>
+              </div> :
+              // <div>
+                <Tooltip title="AR currently unavailable" aria-label="AR currently unavailable">
+                  <IconButton disabled aria-label="close">
+                    <EyeGlassesIcon strokeColor={"#989898"} />
+                  </IconButton>
+                </Tooltip>
+              // {/* </div> */}
+            }
           </Toolbar>
         </AppBar>
         
         <div className={classes.imageContainer}>
           <img className={classes.productImage} src={particularProduct.imgSrc} alt="thumbnail" />
+          {/* <ModelViewer scale="0.2" modelPath={modelImage} /> */}
         </div>
 
           <div className={`${classes.productInfoContainer}`}>
@@ -135,15 +202,15 @@ const ProductDetails = ({open, setOpen}) => {
                 }}
               >
                 <Typography variant="body1" style={{fontSize: "1.3rem !important"}}>Total</Typography>
-                <Typography className="font-rb-bold" variant="body1" style={{color: "#5956E9", fontSize: "1.5rem"}}>$579</Typography>
+                <Typography className="font-rb-bold" variant="body1" style={{color: "#5956E9", fontSize: "1.5rem"}}>{particularProduct.price}</Typography>
               </div>
               <div style={{display: "flex"}}>
                 <Button 
                   variant="contained" color="primary" 
                   fullWidth size="large" className={classes.addToCartButton}
-                  onClick={openCart}
+                  onClick={addProductToCart}
                 >
-                  <p style={{fontSize: "20px" }} className="font-rb-semibold" onClick={openCart}>Add to Cart</p>
+                  <p style={{fontSize: "20px" }} className="font-rb-semibold">Add to Cart</p>
                 </Button>
               </div>
             </div>
@@ -151,7 +218,7 @@ const ProductDetails = ({open, setOpen}) => {
         
       </Dialog>
 
-      <ARView open={ARViewOpen} setOpen={setARViewOpen} />
+      <ARView open={ARViewOpen} setOpen={setARViewOpen} ARLink={ARLink} />
     </>
   )
 }
