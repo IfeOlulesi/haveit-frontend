@@ -69,7 +69,7 @@ const SubMenu = ({theClass}) => {
         <a className="nav__submenu-item-link" href="/">Support</a>
       </li>
       <li id="nl-3" className="nav__submenu-item ">
-        <div className="nav__submenu-item-link" onClick={() => logout({ returnTo: "http://localhost:3000/" })}>Log Out</div>
+        <div className="nav__submenu-item-link" onClick={() => logout({ returnTo: "https://main--cute-mandazi-06ffe7.netlify.app" })}>Log Out</div>
       </li>
     </ul>
   )
