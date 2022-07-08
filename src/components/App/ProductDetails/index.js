@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { OrbitControls } from "@react-three/drei";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { toast } from 'react-toastify';
-import { addItem } from "../../../reducers/cartSlice";
+import { addItem, updateTotalPrice } from "../../../reducers/cartSlice";
 import { makeStyles } from '@material-ui/core/styles';
 import { EyeGlassesIcon } from "../../icons";
 
@@ -149,6 +149,7 @@ const ProductDetails = ({open, setOpen}) => {
 
   const addProductToCart = () => {
     dispatch(addItem(particularProduct));
+    dispatch(updateTotalPrice());
 
     toast.success("Product added to cart! \nGo back to continue shopping👜", {
       theme: 'colored',
@@ -187,13 +188,13 @@ const ProductDetails = ({open, setOpen}) => {
                   <EyeGlassesIcon strokeColor={"#FFFFFF"} />
                 </IconButton>
               </div> :
-              // <div>
-                <Tooltip title="AR currently unavailable" aria-label="AR currently unavailable">
-                  <IconButton disabled aria-label="close">
-                    <EyeGlassesIcon strokeColor={"#989898"} />
-                  </IconButton>
+                <Tooltip title="AR currently unavailable" arrow aria-label="AR currently unavailable">
+                  <span style={{cursor: "pointer"}}>
+                    <IconButton disabled aria-label="close">
+                      <EyeGlassesIcon strokeColor={"#989898"} />
+                    </IconButton>
+                  </span>
                 </Tooltip>
-              // {/* </div> */}
             }
           </Toolbar>
         </AppBar>

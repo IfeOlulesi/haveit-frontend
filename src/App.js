@@ -60,10 +60,10 @@ const App = () => {
           <Routes>
             <Route exact path="/" element = {<WebSite />} />
             <Route path = "/app" element = {
-              isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
-              <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
+              // isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
+              // <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
                 <MainApp />
-              </RequireAuth>
+              // </RequireAuth>
               } 
             />
           </Routes>

@@ -14,7 +14,6 @@ export const cartSlice = createSlice({
   
   reducers: {
     addItem: (state, action) => {
-      console.log(action.payload)
       let {prodName, price, id, imgSrc } = action.payload
       let productExists = state.products.findIndex((el) => {
         return el.id === id
@@ -48,17 +47,24 @@ export const cartSlice = createSlice({
         else if (subjectArray[0].quantity > 0) {
           let productIndex = state.products.findIndex(product => product.id === action.payload);
           if (productIndex > -1) {
-            state.products.pop(productIndex);
+            // state.products.pop(productIndex);
+            let productId = state.products[productIndex].id;
+            let oldProducts = state.products;
+            let newProducts = oldProducts.filter((el) => el.id !== productId);
+            state.products = [...newProducts]
+  
           }
         }
       }
     },
-    removeItem: (state, action) => {
+    removeItem: (state, action) => { //still not working
       let productIndex = state.products.findIndex(product => product.id === action.payload);
+      let productId = state.products[productIndex].id;
+      
       if (productIndex > -1) {
-        state.products = state.products.filter((el) => el.id !== productIndex)
-
-        // state.products.pop(productIndex);
+        let oldProducts = state.products;
+        let newProducts = oldProducts.filter((el) => el.id !== productId);
+        state.products = [...newProducts]
       }
     },
     clearCart: (state, action) => {

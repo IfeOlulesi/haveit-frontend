@@ -147,33 +147,34 @@ const Cart = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-
   const cartState = useSelector(state => state.cart.products);
   const currentTab = useSelector(state => state.app.currentTab);
   const thePrice = useSelector(state => state.cart.totalPrice);
 
-
   let cartOpen = currentTab === "cart";
 
-  dispatch(updateTotalPrice());
 
   const handleClose = () => {
     dispatch(home());
   }
   const incrementQuantity = (productId) => {
     dispatch(increaseQuantity(productId));
+    dispatch(updateTotalPrice());
   }
   const decrementQuantity = (productId) => {
     dispatch(decreaseQuantity(productId));
+    dispatch(updateTotalPrice());
   }
   const deleteProduct = (productId) => {
     dispatch(removeItem(productId));
+    dispatch(updateTotalPrice());
   }
   const checkout = () => {
     dispatch(openSurvey());
   }
   const emptyCart = () => {
     dispatch(clearCart());
+    dispatch(updateTotalPrice());
   }
 
   return (
@@ -208,7 +209,7 @@ const Cart = () => {
             cartState.length > 0 ?
               cartState.map((product) => {
                 return (
-                  <div className={classes.productContainer}>
+                  <div className={classes.productContainer} key={product.name}>
                     <div className={classes.productImageContainer}>
                       <img src={product.imgSrc} alt="productImage" className={classes.productImage} />
                     </div>
