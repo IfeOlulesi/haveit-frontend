@@ -7,7 +7,7 @@ import SpeedDial from '@material-ui/lab/SpeedDial';
 import { ChatIcon } from "../icons";
 
 import { home, favorites, profile, cart } from '../../reducers/appSlice';
-import { openSurvey, closeSurvey } from "../../reducers/surveySlice";
+import { openSurvey } from "../../reducers/surveySlice";
 
 import { useSelector, useDispatch } from 'react-redux';
 

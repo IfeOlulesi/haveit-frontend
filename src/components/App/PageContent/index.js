@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Badge from '@material-ui/core/Badge';
 import { useSelector, useDispatch } from "react-redux";
 import { updateProductInViewId, updateProductInViewType } from "../../../reducers/productSlice";
-import { EyeGlassesIcon } from "../../icons";
+// import { EyeGlassesIcon } from "../../icons";
 import "./index.css"
 
 
