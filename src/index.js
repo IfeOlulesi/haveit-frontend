@@ -14,15 +14,14 @@ import "./fonts/Raleway-Medium.ttf";
 
 const root = document.getElementById('root');
 render(
-  // <Auth0Provider
-  //   domain="dev-8gitaj8h.us.auth0.com"
-  //   clientId="0GmNKWutRlQ7Ni6Jmdb2QXmWB2dNyfFs"
-  //   redirectUri={window.location.origin}
-  // >
+  <Auth0Provider
+    domain="dev-8gitaj8h.us.auth0.com"
+    clientId="0GmNKWutRlQ7Ni6Jmdb2QXmWB2dNyfFs"
+    redirectUri={window.location.origin}
+  >
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  // </Auth0Provider>
-  , root 
+  </Auth0Provider>, root 
 );
 
