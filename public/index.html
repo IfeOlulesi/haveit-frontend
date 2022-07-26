@@ -5,7 +5,10 @@
       window.AppcuesSettings = {
         enableURLDetection: true
       };
+    </script>
+    <script src="//fast.appcues.com/118152.js"></script>
 
+    <script type="text/javascript">
       const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
       function generateString(length) {
@@ -21,13 +24,12 @@
       let fakeUserID = generateString();
 
       window.Appcues.identify(
-        fakeUserID, // unique, required
+        "ifeolulesi@gmail.com", // unique, required
         {
           // additional suggestions
         }
       );
     </script>
-    <script src="//fast.appcues.com/118152.js"></script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
