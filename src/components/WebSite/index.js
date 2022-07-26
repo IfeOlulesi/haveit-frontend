@@ -20,8 +20,8 @@ const WebSite = () => {
   return (
     <>
     {
-      isLoading ? <LoadingOverlay /> :
-      isAuthenticated ? <Navigate to="/app" replace /> :
+      // isLoading ? <LoadingOverlay /> :
+      // isAuthenticated ? <Navigate to="/app" replace /> :
       <div {...scrollProps} className="alpha-container wrapper display-flex">
         <NavBar scrollTop={scrollTop} />
         <LandingPageContent />
