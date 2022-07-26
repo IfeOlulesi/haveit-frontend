@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./index.css";
 
+import { useDispatch } from "react-redux";
+import { openSurvey } from "../../../reducers/surveySlice";
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-
+// import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { ChatIcon } from "../../icons";
 import Cart from "../Cart";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -48,17 +51,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const ARView = ({open, setOpen, ARLink}) => {
-  const classes = useStyles()
-
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  // const isSurveyOpen = useSelector(state => state.survey.surveyOpen);
   const [cartOpen, setCartOpen] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
   }
 
-  const openCart = () => {
-    setCartOpen(true);
+  const openFeedbackForm = () => {
+    dispatch(openSurvey());
   }
+
+  // const closeFeedbackForm = () => dispatch(closeSurvey);
 
   return (
     <>
@@ -74,8 +80,8 @@ const ARView = ({open, setOpen, ARLink}) => {
             <IconButton edge="start" onClick={handleClose} aria-label="close">
               <KeyboardBackspaceRoundedIcon style={{ color: "#fff" }}/>
             </IconButton>
-            <IconButton edge="start" onClick={openCart} aria-label="close">
-              <AddShoppingCartIcon style={{ color: "#fff" }}/>
+            <IconButton edge="start" onClick={openFeedbackForm} aria-label="close">
+              <ChatIcon style={{ color: "#fff" }}  />
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -83,8 +89,8 @@ const ARView = ({open, setOpen, ARLink}) => {
         <div className="ar-display">
           <iframe 
             // src="https://mywebar.com/p/Project_0_o4rwm79kfm" 
-            src={ARLink}
             // width="340" height="600" 
+            src={ARLink}
             className="ar-view-iframe"
             allow="camera; accelerometer; vr" 
             title="AR View"
