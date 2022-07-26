@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 
 import SpeedDial from '@material-ui/lab/SpeedDial';
 // import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import { ChatIcon } from "../icons";
+import LoadingOverlay from "../utils/LoadingOverlay";
 
 import { home, favorites, profile, cart } from '../../reducers/appSlice';
 import { openSurvey } from "../../reducers/surveySlice";
@@ -51,56 +52,70 @@ const useStyles = makeStyles((theme) => ({
 
 const MainApp = () => {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentTab = useSelector(state => state.app.currentTab)
   const items = useSelector(state => state.cart.products);
 
   const allItems = items.reduce((acc, curr) => acc + curr.quantity, 0);
 
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+    }
+  }, [])
+
   return (
-    <div className={classes.webAppContainer}>
-      <AppNavBar />
-      <PageContent />
+    <>
+      {isLoading ? <LoadingOverlay /> :
 
-      <Tooltip title={
-        <p style={{fontSize: "14px", padding: "3px",}}> Fill Feedback Form! </ p>
-      } arrow>
-        <SpeedDial
-          ariaLabel="SpeedDial example"
-          icon={<ChatIcon />}
-          open={false}
-          onClick={() => dispatch(openSurvey())}
-          >
-        </SpeedDial>
-      </Tooltip>
+        <div className={classes.webAppContainer}>
+          <AppNavBar />
+          <PageContent />
 
-      <div className={classes.utilBar}>
-        <div onClick={() => dispatch(home())} style={{cursor: "pointer",}}>
-          {currentTab === "home" ? <HomeFilled /> : <HomeOutline />}
+          <Tooltip title={
+            <p style={{fontSize: "14px", padding: "3px",}}> Fill Feedback Form! </ p>
+          } arrow>
+            <SpeedDial
+              ariaLabel="SpeedDial example"
+              icon={<ChatIcon />}
+              open={false}
+              onClick={() => dispatch(openSurvey())}
+              >
+            </SpeedDial>
+          </Tooltip>
+
+          <div className={classes.utilBar}>
+            <div onClick={() => dispatch(home())} style={{cursor: "pointer",}}>
+              {currentTab === "home" ? <HomeFilled /> : <HomeOutline />}
+            </div>
+            <div onClick={() => dispatch(favorites())} style={{cursor: "pointer",}}>
+              {currentTab === "favorites" ? <HeartFilled /> : <HeartOutlined />}
+            </div>
+            <div onClick={() => dispatch(profile())} style={{cursor: "pointer",}}>
+              {currentTab === "profile" ? <ProfileFilled /> : <ProfileOutline />}
+            </div>
+            <div onClick={() => dispatch(cart())} style={{cursor: "pointer",}}>
+              {
+                currentTab === "cart" ? 
+                <CartFilled /> : 
+                
+                <Badge badgeContent={allItems} color="secondary" showZero max={99}>
+                  <CartOutlined />
+                </Badge>
+              }
+            </div>
+          </div>
+          
+          <ComingSoon />
+          <Cart />
+          <Survey />
         </div>
-        <div onClick={() => dispatch(favorites())} style={{cursor: "pointer",}}>
-          {currentTab === "favorites" ? <HeartFilled /> : <HeartOutlined />}
-        </div>
-        <div onClick={() => dispatch(profile())} style={{cursor: "pointer",}}>
-          {currentTab === "profile" ? <ProfileFilled /> : <ProfileOutline />}
-        </div>
-        <div onClick={() => dispatch(cart())} style={{cursor: "pointer",}}>
-          {
-            currentTab === "cart" ? 
-            <CartFilled /> : 
-            
-            <Badge badgeContent={allItems} color="secondary" showZero max={99}>
-              <CartOutlined />
-            </Badge>
-          }
-        </div>
-      </div>
-      
-      <ComingSoon />
-      <Cart />
-      <Survey />
-    </div>
+      }
+    </>
   )
 }
 

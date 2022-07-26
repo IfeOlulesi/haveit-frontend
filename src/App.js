@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React from "react";
 import './App.css';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -8,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import MainApp from "./components/App";
 import WebSite from "./components/WebSite";
-import LoadingOverlay from "./components/utils/LoadingOverlay";
+// import LoadingOverlay from "./components/utils/LoadingOverlay";
 
 import {
   BrowserRouter,
@@ -32,9 +33,6 @@ const theme = createTheme({
     secondary: {
       main: projectColors.secondary,
     },
-    // background: {
-    //   default: "#F2F2F2"
-    // }
   },
   typography: {
     fontFamily: [
@@ -46,12 +44,12 @@ const theme = createTheme({
 
 
 const App = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
-  const [overlayOpen, setOverlayOpen] = useState(false);
+  // const { isAuthenticated, isLoading } = useAuth0();
+  // const [overlayOpen, setOverlayOpen] = useState(false);
   
-  useEffect(() => {
-    if (isLoading === true) setOverlayOpen(true);
-  }, [isLoading])
+  // useEffect(() => {
+  //   if (isLoading === true) setOverlayOpen(true);
+  // }, [isLoading])
 
   return (
     <Provider store={store}>
@@ -60,10 +58,10 @@ const App = () => {
           <Routes>
             <Route exact path="/" element = {<WebSite />} />
             <Route path = "/app" element = {
-              isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
-              <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
+              // isLoading ? <LoadingOverlay open={overlayOpen} setOpen = {setOverlayOpen} /> :
+              // <RequireAuth authStatus = {isAuthenticated} loading = {isLoading}>
                 <MainApp />
-              </RequireAuth>
+              // </RequireAuth>
               } 
             />
           </Routes>
@@ -74,14 +72,14 @@ const App = () => {
   );
 }
 
-const RequireAuth = ({ children, authStatus }) => {
-  const { loginWithRedirect } = useAuth0();
+// const RequireAuth = ({ children, authStatus }) => {
+//   const { loginWithRedirect } = useAuth0();
 
-  if (authStatus === false) {
-    loginWithRedirect();
-  }
-  else return children;
-}
+//   if (authStatus === false) {
+//     loginWithRedirect();
+//   }
+//   else return children;
+// }
 
 
 export default App;

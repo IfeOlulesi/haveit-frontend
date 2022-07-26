@@ -1,6 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -12,7 +13,6 @@ import LandingPageBg_2 from "./landing-page-image2.png";
 
 const useStyles = makeStyles((theme) => ({
   landingPageContainer: {
-    // border: "1px solid lightgrey",
     display: "flex",
     flexDirection: "column",
     padding: "6.5em 0 0 0",
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     padding: ".9em .2em .9em .2em",
     textTransform: "initial",
     fontWeight: "700",
-    // fontSize: "larger",
     fontStretch: "expanded",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
   },
@@ -53,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
   },
   landingPageBg: {
-    // position: "absolute",
     width: "93vw",
     marginTop: "40px",
   },
@@ -62,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.4em",
     lineHeight: "1.5",
     textAlign: "center",
-    // fontWeight: "100",
   },
   heroText2: {
     marginTop: "40px",
@@ -70,11 +67,11 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.5",
     textAlign: "center",
     fontWeight: "700",
-    // color: "primary",
+    color: "#5956E9",
+    cursor: "pointer",
   },
 
   landingPageBg_2: {
-    // position: "absolute",
     width: "80vw",
     marginTop: "40px",
   },
@@ -98,11 +95,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-
 const LandingPageContent = () => {
 
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const redirectToWebApp = () => navigate("../app", { replace: true });
 
   return (
     <div className={`${classes.landingPageContainer}`}>
@@ -120,7 +119,7 @@ const LandingPageContent = () => {
               className={classes.landingPageButton}
               variant="contained"
               color="primary"
-              onClick={() => loginWithRedirect()}
+              onClick={() => redirectToWebApp()}
             >
               Get Started
             </Button>
@@ -141,7 +140,7 @@ const LandingPageContent = () => {
         How it works
       </div>
 
-      <div className={`${classes.heroText2} font-rb-medium`}>
+      <div className={`${classes.heroText2} font-rb-medium`} onClick={() => redirectToWebApp()}>
         Create an account
       </div>
 
