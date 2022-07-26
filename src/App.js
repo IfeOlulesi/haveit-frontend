@@ -3,7 +3,7 @@ import React from "react";
 import './App.css';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

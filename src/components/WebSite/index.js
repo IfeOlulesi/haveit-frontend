@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import { useAuth0 } from "@auth0/auth0-react";
-import { Navigate } from "react-router-dom";
+// import { useAuth0 } from "@auth0/auth0-react";
+// import { Navigate } from "react-router-dom";
 
 import NavBar from "./NavBar/NavBar";
 import LandingPageContent from "./LandingPageContent/LandingPageContent";
-import LoadingOverlay from "../utils/LoadingOverlay";
+// import LoadingOverlay from "../utils/LoadingOverlay";
 
 const useScrollTop = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -14,7 +14,7 @@ const useScrollTop = () => {
 }
 
 const WebSite = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
+  // const { isAuthenticated, isLoading } = useAuth0();
   const [scrollTop, scrollProps] = useScrollTop();
 
   return (
