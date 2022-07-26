@@ -66,7 +66,7 @@ const MainApp = () => {
         setIsLoading(false);
       }, 1500);
     }
-  }, [])
+  })
 
   return (
     <>
